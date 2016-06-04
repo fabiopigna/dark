@@ -25,8 +25,7 @@ export class Weather {
         this.listeners = [];
         var worldBounds = world.getBounds();
         var origin = worldBounds.getOrigin();
-        var size = new Size(worldBounds.width, worldBounds.height * 0.2);
-        this.bounds = new RectangleBounds(origin, size).resize(CloudC.MAX_WIDTH, 0);
+        this.bounds = new RectangleBounds(origin, world.getSize()).resize(CloudC.MAX_WIDTH, 0);
     }
 
     getClouds():Cloud[] {

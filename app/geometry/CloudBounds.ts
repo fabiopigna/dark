@@ -10,6 +10,7 @@ import {PolygonBounds} from "./PolygonBounds";
 export class CloudBounds extends PolygonBounds {
 
     private origin:Point;
+    private bottomLine:LineBounds;
 
     constructor(origin:Point, maxWidth:number, maxHeight:number) {
         var rectangleBounds = new RectangleBounds(new Point(0, 0), new Size(maxWidth, maxHeight));
@@ -25,6 +26,7 @@ export class CloudBounds extends PolygonBounds {
 
         super(t0.getPoints().concat(t1.getPoints()));
         this.origin = origin;
+        this.bottomLine = bottomLine;
     }
 
     translateX(x:number) {
@@ -36,4 +38,7 @@ export class CloudBounds extends PolygonBounds {
     }
 
 
+    getBottomLine() {
+        return this.bottomLine;
+    }
 }
