@@ -28,6 +28,12 @@ export class RectangleBounds implements ISnapBounds {
         return new LineBounds(topLeft, bottomLeft);
     }
 
+    getBottomLine() {
+        var bottomLeft = new Point(this.origin.x, this.size.height + this.origin.y);
+        var bottomRight = new Point(this.origin.x + this.size.width, this.size.height + this.origin.y);
+        return new LineBounds(bottomLeft, bottomRight);
+    }
+
     getOrigin():Point {
         return this.origin;
     }
@@ -35,6 +41,7 @@ export class RectangleBounds implements ISnapBounds {
     get width():number {
         return this.size.width;
     }
+
     get height():number {
         return this.size.height;
     }
@@ -55,4 +62,14 @@ export class RectangleBounds implements ISnapBounds {
     top():number {
         return this.origin.y;
     }
+
+    resize(deltaWidth:number, deltaHeight:number):RectangleBounds {
+        this.origin.x -= deltaWidth;
+        this.origin.y -= deltaHeight;
+        this.size.width += 2 * deltaWidth;
+        this.size.height += 2 * deltaHeight;
+        return this;
+    }
+
+
 }

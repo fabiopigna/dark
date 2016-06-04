@@ -39,6 +39,7 @@ export class WorldPainter implements IPainter {
 
         this.earthPainter.repaint(elapsed);
         this.sunPainter.repaint(elapsed);
+        this.weatherPainter.repaint(elapsed);
     }
 
 }

@@ -6,6 +6,7 @@ import {LineBounds} from "../geometry/LineBounds";
 import {IForestListener} from "./listeners/IForestListener";
 import {RectangleBounds} from "../geometry/RectangleBounds";
 import {Size} from "../geometry/Size";
+import {CloudC} from "./constants/NatureConstants";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
@@ -24,8 +25,8 @@ export class Weather {
         this.listeners = [];
         var worldBounds = world.getBounds();
         var origin = worldBounds.getOrigin();
-        var size = new Size(worldBounds.width, worldBounds.height * 0.4);
-        this.bounds = new RectangleBounds(origin, size)
+        var size = new Size(worldBounds.width, worldBounds.height * 0.2);
+        this.bounds = new RectangleBounds(origin, size).resize(CloudC.MAX_WIDTH, 0);
     }
 
     getClouds():Cloud[] {
@@ -33,7 +34,7 @@ export class Weather {
     }
 
     update(elapsed:number) {
-        if (this.time.itsTimeTo(elapsed)) {
+        if (this.time.itsTimeTo(elapsed) && this.clouds.length < 5) {
             var newCloud = new Cloud(this);
             this.clouds.push(newCloud);
             this.listeners.forEach((listener:IWeatherListener)=> {

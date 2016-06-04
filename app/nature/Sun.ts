@@ -3,7 +3,7 @@ import {Size} from "../geometry/Size";
 import {CircleBounds} from "../geometry/CircleBounds";
 import {Point} from "../geometry/Point";
 import {ISnapBounds} from "./interface/ISnapBounds";
-import {RangedValue} from "../geometry/Range";
+import {RangedValue} from "../geometry/RangedValue";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
@@ -21,8 +21,8 @@ export class Sun implements IUpdatable {
 
     constructor(size:Size) {
         this.size = size;
-        this.rangeWidth = new RangedValue(-50, this.size.width +50, 0);
-        this.rangeHeight = new RangedValue(this.size.height * 0.7, 0, this.size.height * 0.1);
+        this.rangeWidth = new RangedValue(-50, this.size.width +50);
+        this.rangeHeight = new RangedValue(this.size.height * 0.7, this.size.height * 0.1);
     }
 
     update(elapsed:number) {

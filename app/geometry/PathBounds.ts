@@ -13,8 +13,13 @@ export class PathBounds implements ISnapBounds {
         this.closed = closed;
     }
 
+    getPoints():Point[] {
+        return this.points;
+    }
+
+
     toSnap():{} {
-        var path = 'M ' + this.points[0].x + ' ' + this.points[0].y;
+        var path = 'm ' + this.points[0].x + ' ' + this.points[0].y;
         this.points.reduce((prevPoint:Point, point:Point)=> {
             path += ' L ' + point.x + ' ' + point.y;
             return point;
@@ -22,4 +27,6 @@ export class PathBounds implements ISnapBounds {
         path += this.closed ? ' z' : '';
         return {d: path};
     }
+
+
 }

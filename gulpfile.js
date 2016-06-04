@@ -134,6 +134,17 @@ gulp.task('serve', ['build'], function () {
     gulp.watch(['app/**/*', 'index.html'], ['_buildAndReload']);
 });
 
+// run browsersync for development
+gulp.task('reload', [], function () {
+    browserSync({
+        server: {
+            baseDir: 'dist'
+        }
+    });
+
+    gulp.watch(['app/**/*', 'index.html'], reload);
+});
+
 // run browsersync on production version
 gulp.task('prod', ['build_prod'], function () {
     browserSync({
@@ -156,6 +167,7 @@ gulp.task('test', ['_compile', '_compile_tests'], function () {
 
 gulp.task('build', ['_compile', '_index']);
 gulp.task('_buildAndReload', ['build'], reload);
+
 
 gulp.task('build_prod', ['_prod:index']);
 

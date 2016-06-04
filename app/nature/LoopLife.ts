@@ -1,7 +1,7 @@
 /**
  * Created by fabiopigna on 03/06/2016.
  */
-export class Life {
+export class LoopLife {
     private life:number;
     private lifeStartTime:number;
     private lifeGrowTime:number;
@@ -16,15 +16,12 @@ export class Life {
 
     update(elapsed:number) {
         this.lifeStartTime = this.lifeStartTime ? this.lifeStartTime : elapsed;
-        this.lifeTime = (elapsed - this.lifeStartTime) / this.lifeGrowTime;
-        var currentLifeStep = Math.min(this.lifeTime, this.lifeGrowTime);
-        if (this.lifeNormalized < currentLifeStep) {
-            this.lifeNormalized = currentLifeStep;
-        }
+        this.lifeTime = ((elapsed - this.lifeStartTime) % this.lifeGrowTime) / this.lifeGrowTime;
+        this.lifeNormalized = this.lifeTime;
     }
 
     isGrowing():boolean {
-        return this.lifeNormalized < 1.0;
+        return true;
     }
 
     normalized():number {

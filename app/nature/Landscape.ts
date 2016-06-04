@@ -3,7 +3,7 @@ import {LineBounds} from "../geometry/LineBounds";
 import {Size} from "../geometry/Size";
 import {Point} from "../geometry/Point";
 import {PolygonBounds} from "../geometry/PolygonBounds";
-import {RangedValue} from "../geometry/Range";
+import {RangedValue} from "../geometry/RangedValue";
 import {Mountain} from "./Mountain";
 /**
  * Created by fabiopigna on 02/06/2016.

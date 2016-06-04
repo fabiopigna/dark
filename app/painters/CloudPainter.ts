@@ -8,16 +8,23 @@ import Paper = Snap.Paper;
 export class CloudPainter implements IPainter {
     private cloud:Cloud;
     private snap:Snap.Paper;
-    private circle:Snap.Element;
+    private snapCloud:Snap.Element;
+    private snapGroup:Snap.Paper;
 
     constructor(snap:Paper, cloud:Cloud) {
         this.snap = snap;
         this.cloud = cloud;
-        this.circle = snap.circle(0, 0, 10).attr({fill: '#666'});
+        this.snapGroup = snap.g().addClass('cloud_g');
+        this.snapCloud = this.snapGroup.path().attr({fill: '#666'});
+
     }
 
     repaint(elapsed:number) {
-        this.circle.attr(this.cloud.getBounds().toSnap())
+        var origin = this.cloud.getBounds().getOrigin();
+        var matrix = Snap.matrix();
+        var ts = matrix.translate(origin.x, origin.y).toTransformString();
+        this.snapGroup.attr({'transform': ts});
+        this.snapCloud.attr(this.cloud.getBounds().toSnap())
     }
 
 

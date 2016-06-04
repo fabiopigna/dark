@@ -4,15 +4,13 @@
 export class RangedValue {
     private minValue:number;
     private maxValue:number;
-    private padding:number;
 
-    constructor(minValue:number, maxValue:number, padding:number) {
+    constructor(minValue:number, maxValue:number) {
         this.minValue = minValue;
         this.maxValue = maxValue;
-        this.padding = padding;
     }
 
     get(percent:number):number {
-        return this.padding + this.minValue + percent * (this.maxValue - this.minValue);
+        return this.minValue + percent * (this.maxValue - this.minValue);
     }
 }

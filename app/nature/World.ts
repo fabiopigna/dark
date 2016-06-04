@@ -43,6 +43,7 @@ export class World implements IUpdatable {
     update(elapsed:number) {
         this.sun.update(elapsed);
         this.earth.update(elapsed);
+        this.weather.update(elapsed);
     }
 
     getSun():Sun {

@@ -1,4 +1,4 @@
-export class Point{
+export class Point {
 
     private _x:number;
     private _y:number;
@@ -25,5 +25,11 @@ export class Point{
 
     set y(value:number) {
         this._y = value;
+    }
+
+    moveBy(deltaX:number, deltaY:number):Point {
+        this.x += deltaX;
+        this.y += deltaY;
+        return this;
     }
 }
