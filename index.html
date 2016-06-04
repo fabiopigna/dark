@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Angular TypeScript SystemJS</title>
+
+    <!-- libs:js -->
+    <!-- libs -->
+
+    <!-- 2. Configure SystemJS -->
+    <script>
+        System.config({
+            packages: {
+                app: {
+                    format: 'register',
+                    defaultExtension: 'js'
+                }
+            }
+        });
+        System.import('app/boot')
+                .then(null, console.error.bind(console));
+    </script>
+
+    <!-- bundle:js -->
+    <!-- bundle -->
+
+</head>
+
+<!-- 3. Display the application -->
+<body style="background: #000;">
+<div ng-controller="MyController as myController">{{myController.getMessage()}}</div>
+
+<div style="display: flex; flex-direction: row; ">
+    <div style="flex:1"></div>
+    <div style="background: #222"><svg></svg></div>
+    <div style="flex:1"></div>
+</div>
+
+</body>
+
+</html>
