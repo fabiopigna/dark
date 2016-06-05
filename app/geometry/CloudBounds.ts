@@ -4,6 +4,8 @@ import {RectangleBounds} from "./RectangleBounds";
 import {Size} from "./Size";
 import {RandomOption} from "../util/RandomOption";
 import {PolygonBounds} from "./PolygonBounds";
+import Polygon = SAT.Polygon;
+import Vector = SAT.Vector;
 /**
  * Created by fabiopigna on 04/06/2016.
  */
@@ -37,8 +39,16 @@ export class CloudBounds extends PolygonBounds {
         return this.origin;
     }
 
-
     getBottomLine() {
         return this.bottomLine;
+    }
+
+    toSAT():Polygon {
+        var originV:Vector = new Vector(this.origin.x, this.origin.y);
+        var pointsV:Vector[] = this.getPoints().map((point:Point)=> {
+            return new Vector(point.x, point.y)
+        });
+        return new Polygon(originV, pointsV);
+
     }
 }

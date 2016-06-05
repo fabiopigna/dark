@@ -32,4 +32,11 @@ export class WeatherPainter implements IWeatherListener {
     }
 
 
+    cloudRemoved(cloud:Cloud):void {
+        var cloudPainterToRemove = this.cloudPainters.filter((cloudPainter:CloudPainter)=> {
+            return cloudPainter.getCloud() === cloud;
+        })[0];
+        cloudPainterToRemove.destroy();
+        this.cloudPainters.remove(cloudPainterToRemove);
+    }
 }

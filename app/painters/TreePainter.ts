@@ -17,7 +17,7 @@ export class TreePainter implements IPainter {
     }
 
     repaint(elapsed:number) {
-        this.path.attr(this.tree.getBounds().toSnap())
+        this.path.node.setAttribute('d', this.tree.getBounds().toSnapString());
     }
 
 

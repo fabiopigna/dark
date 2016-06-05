@@ -17,4 +17,16 @@ export class CircleBounds implements ISnapBounds {
     toSnap():{} {
         return {cx: this._center.x, cy: this._center.y, r: this._radius};
     }
+
+    get cx():number {
+        return this._center.x;
+    }
+
+    get cy():number {
+        return this._center.y;
+    }
+
+    get r():number {
+        return this._radius;
+    }
 }

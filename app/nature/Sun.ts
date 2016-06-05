@@ -21,7 +21,7 @@ export class Sun implements IUpdatable {
 
     constructor(size:Size) {
         this.size = size;
-        this.rangeWidth = new RangedValue(-50, this.size.width +50);
+        this.rangeWidth = new RangedValue(-50, this.size.width + 50);
         this.rangeHeight = new RangedValue(this.size.height * 0.7, this.size.height * 0.1);
     }
 
@@ -32,7 +32,7 @@ export class Sun implements IUpdatable {
         this.radius = 10 + (1 - this.sunValue) * 10;
     }
 
-    getBounds():ISnapBounds {
+    getBounds():CircleBounds {
         return new CircleBounds(this.center, this.radius);
     }
 

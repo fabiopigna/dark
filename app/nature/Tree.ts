@@ -20,7 +20,7 @@ export class Tree implements IUpdatable {
 
     constructor(forest:Forest) {
         this.root = forest.getBounds().getRandomPoint();
-        this.life = new Life(TreeC.LIFE_TIME_TO_GROW);
+        this.life = new Life(TreeC.LIFE_TIME_TO_GROW, Infinity);
         this.left = new Point(this.root.x - this.life.normalized() * 0.5 * TreeC.WIDTH, this.root.y - TreeC.DISTANCE_FROM_EARTH);
         this.top = new Point(this.root.x, this.root.y - this.life.normalized() * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH);
         this.right = new Point(this.root.x + this.life.normalized() * 0.5 * TreeC.WIDTH, this.root.y - TreeC.DISTANCE_FROM_EARTH);

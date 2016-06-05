@@ -14,7 +14,10 @@ export class SunPainter implements IPainter {
     }
 
     repaint(elapsed:number) {
-        this.circle.attr(this.sun.getBounds().toSnap());
-        this.circle.attr({fill: Snap.hsl(0, 0, (0.2 + 0.8*this.sun.getSunlight()))})
+        var bounds = this.sun.getBounds();
+        this.circle.node.setAttribute('cx', '' + bounds.cx);
+        this.circle.node.setAttribute('cy', '' + bounds.cy);
+        this.circle.node.setAttribute('r', '' + bounds.r);
+        this.circle.node.setAttribute('fill', Snap.hsl(0, 0, (0.2 + 0.8 * this.sun.getSunlight())).toString());
     }
 }

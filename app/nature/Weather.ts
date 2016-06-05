@@ -7,6 +7,8 @@ import {IForestListener} from "./listeners/IForestListener";
 import {RectangleBounds} from "../geometry/RectangleBounds";
 import {Size} from "../geometry/Size";
 import {CloudC} from "./constants/NatureConstants";
+import {Collider} from "../util/Collider";
+import {Death} from "./Death";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
@@ -18,9 +20,11 @@ export class Weather {
     private time:RandomTimer = new RandomTimer(2000, 2000);
     private listeners:IWeatherListener[];
     private bounds:RectangleBounds;
+    private death:Death<Cloud>;
 
     constructor(world:World) {
         this.world = world;
+        this.death = new Death<Cloud>();
         this.clouds = [];
         this.listeners = [];
         var worldBounds = world.getBounds();
@@ -33,7 +37,7 @@ export class Weather {
     }
 
     update(elapsed:number) {
-        if (this.time.itsTimeTo(elapsed) && this.clouds.length < 5) {
+        if (this.time.itsTimeTo(elapsed) && this.clouds.length < 10) {
             var newCloud = new Cloud(this);
             this.clouds.push(newCloud);
             this.listeners.forEach((listener:IWeatherListener)=> {
@@ -41,8 +45,14 @@ export class Weather {
             })
         }
         this.clouds.forEach((cloud:Cloud)=> {
-            cloud.update(elapsed)
+            cloud.update(elapsed);
         });
+        this.death.doYourJob(this.clouds).forEach((cloud:Cloud)=> {
+            this.listeners.forEach((listener:IWeatherListener)=> {
+                listener.cloudRemoved(cloud)
+            })
+        });
+        Collider.check(this.clouds);
     }
 
     getBounds():RectangleBounds {

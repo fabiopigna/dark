@@ -10,29 +10,37 @@ import {CloudBounds} from "../geometry/CloudBounds";
 import {RandomOption} from "../util/RandomOption";
 import {LineBounds} from "../geometry/LineBounds";
 import {Rain} from "./Rain";
+import {ICloudListener} from "./listeners/ICloudListener";
+import {Collidable} from "../util/Collider";
+import {ILiveable} from "./interface/ILiveable";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
-export class Cloud implements IUpdatable {
+export class Cloud implements IUpdatable,Collidable,ILiveable {
+
 
     private weather:Weather;
     private rain:Rain;
 
     private point:Point;
-    private life:LoopLife;
+    private life:Life;
     private bounds:CloudBounds;
     private randomLife:RandomOption = new RandomOption(CloudC.LIFE_TIME_TO_LOOP, CloudC.LIFE_TIME_TO_LOOP * 0.5);
     private randomWidth:RandomOption = new RandomOption(CloudC.MAX_WIDTH, CloudC.MAX_WIDTH * 0.2);
     private randomHeight:RandomOption = new RandomOption(CloudC.MAX_HEIGHT, CloudC.MAX_HEIGHT * 0.1);
     private rangedX:RangedValue;
+    private collide:boolean;
+
+    private listeners:ICloudListener[];
 
     constructor(weather:Weather) {
         this.weather = weather;
         this.point = weather.getBounds().getLeftLine().getRandomPoint(new RandomOption(0.1, 0.1));
-        this.life = new LoopLife(this.randomLife.getRandom());
+        this.life = new Life(this.randomLife.getRandom());
         this.rangedX = new RangedValue(weather.getBounds().left(), weather.getBounds().right());
         this.bounds = new CloudBounds(this.point, this.randomWidth.getRandom(), this.randomHeight.getRandom());
         this.rain = new Rain(weather, this);
+        this.listeners = [];
     }
 
     update(elapsed:number) {
@@ -47,5 +55,40 @@ export class Cloud implements IUpdatable {
 
     getRain():Rain {
         return this.rain;
+    }
+
+    startCollide() {
+        this.collide = true;
+        this.listeners.forEach((listener:ICloudListener)=> {
+            listener.startRain();
+        })
+    }
+
+    stopCollide() {
+        this.collide = false;
+        this.listeners.forEach((listener:ICloudListener)=> {
+            listener.stopRain();
+        })
+    }
+
+    isCollide():boolean {
+        return this.collide;
+    }
+
+    getBoundsCollidable():SAT.Polygon {
+        return this.bounds.toSAT();
+    }
+
+
+    addListener(listener:ICloudListener) {
+        this.listeners.push(listener);
+    }
+
+    getLife():Life {
+        return this.life;
+    }
+
+    removeListener(listener:ICloudListener) {
+        this.listeners.remove(listener);
     }
 }

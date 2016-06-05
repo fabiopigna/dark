@@ -4,5 +4,6 @@ import {Cloud} from "../Cloud";
  */
 export interface IWeatherListener {
     cloudCreated(newCloud:Cloud):void;
+    cloudRemoved(cloud:Cloud):void;
 
 }

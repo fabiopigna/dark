@@ -1,6 +1,7 @@
 import {World} from "./nature/World";
 import {WorldPainter} from "./painters/WorldPainter";
 
+
 export class MyService {
 
     constructor() {
@@ -33,7 +34,6 @@ export class MyService {
     }
 
     public getMessage() {
-
         return 'Hello World!';
     }
 

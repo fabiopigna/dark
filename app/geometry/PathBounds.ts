@@ -19,13 +19,17 @@ export class PathBounds implements ISnapBounds {
 
 
     toSnap():{} {
+        return {d: this.toSnapString()};
+    }
+
+    toSnapString():string {
         var path = 'm ' + this.points[0].x + ' ' + this.points[0].y;
         this.points.reduce((prevPoint:Point, point:Point)=> {
             path += ' L ' + point.x + ' ' + point.y;
             return point;
         });
         path += this.closed ? ' z' : '';
-        return {d: path};
+        return path;
     }
 
 

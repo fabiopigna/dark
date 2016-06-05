@@ -74,7 +74,9 @@ gulp.task('_copy:libs', [], function () {
             'node_modules/systemjs/dist/system.src.js',
             'node_modules/angular/angular.js',
             'node_modules/snapsvg/dist/snap.svg.js',
-            'node_modules/d3-timer/build/d3-timer.js'
+            'node_modules/d3-timer/build/d3-timer.js',
+            'node_modules/sat/SAT.js',
+            'lib/ArrayUtil.js'
         ])
         .pipe(gulp.dest('dist/lib'))
 });

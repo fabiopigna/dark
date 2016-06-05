@@ -2,22 +2,22 @@
  * Created by fabiopigna on 03/06/2016.
  */
 export class Life {
-    private life:number;
     private lifeStartTime:number;
     private lifeGrowTime:number;
     private lifeNormalized:number;
     private lifeTime:number;
+    private timeToDie:number;
 
-    constructor(lifeGrowTime:number) {
-        this.life = 0;
+    constructor(lifeGrowTime:number, timeToDie?:number) {
+        this.timeToDie = timeToDie ? timeToDie : lifeGrowTime;
         this.lifeNormalized = 0;
         this.lifeGrowTime = lifeGrowTime;
     }
 
     update(elapsed:number) {
         this.lifeStartTime = this.lifeStartTime ? this.lifeStartTime : elapsed;
-        this.lifeTime = (elapsed - this.lifeStartTime) / this.lifeGrowTime;
-        var currentLifeStep = Math.min(this.lifeTime, this.lifeGrowTime);
+        this.lifeTime = (elapsed - this.lifeStartTime);
+        var currentLifeStep = Math.min(this.lifeTime / this.lifeGrowTime, this.lifeGrowTime);
         if (this.lifeNormalized < currentLifeStep) {
             this.lifeNormalized = currentLifeStep;
         }
@@ -29,5 +29,9 @@ export class Life {
 
     normalized():number {
         return this.lifeNormalized;
+    }
+
+    isDead():boolean {
+        return this.lifeTime > this.timeToDie;
     }
 }
