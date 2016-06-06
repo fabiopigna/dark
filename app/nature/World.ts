@@ -23,9 +23,9 @@ export class World implements IUpdatable {
         this.height = height;
         this.bounds = new RectangleBounds(new Point(0, 0), new Size(this.width, this.height));
         this.sun = new Sun(this.getSize());
-        this.earth = new Earth(this.getSize());
         this.landscape = new Landscape(this.getSize());
         this.weather = new Weather(this);
+        this.earth = new Earth(this.getSize(), this.weather);
     }
 
     getSize():Size {

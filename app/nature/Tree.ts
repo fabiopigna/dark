@@ -10,7 +10,7 @@ import {Life} from "./Life";
  */
 export class Tree implements IUpdatable {
 
-
+    private forest:Forest;
     private life:Life;
     private root:Point;
     private bounds:PolygonBounds;
@@ -19,6 +19,7 @@ export class Tree implements IUpdatable {
     private right:Point;
 
     constructor(forest:Forest) {
+        this.forest = forest;
         this.root = forest.getBounds().getRandomPoint();
         this.life = new Life(TreeC.LIFE_TIME_TO_GROW, Infinity);
         this.left = new Point(this.root.x - this.life.normalized() * 0.5 * TreeC.WIDTH, this.root.y - TreeC.DISTANCE_FROM_EARTH);
@@ -28,14 +29,12 @@ export class Tree implements IUpdatable {
     }
 
     update(elapsed:number) {
-
         if (this.life.isGrowing()) {
             this.life.update(elapsed);
             this.left.x = this.root.x - this.life.normalized() * 0.5 * TreeC.WIDTH;
             this.top.y = this.root.y - this.life.normalized() * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH;
             this.right.x = this.root.x + this.life.normalized() * 0.5 * TreeC.WIDTH;
         }
-
     }
 
 

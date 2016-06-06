@@ -5,6 +5,7 @@ import {Tree} from "./Tree";
 import {LineBounds} from "../geometry/LineBounds";
 import {CenterLineBounds} from "../geometry/CenterLineBounds";
 import {IForestListener} from "./listeners/IForestListener";
+import {Weather} from "./Weather";
 
 /**
  * Created by fabiopigna on 03/06/2016.
@@ -18,7 +19,7 @@ export class Forest implements IUpdatable {
     private range:number = 100;
     private listeners:IForestListener[];
 
-    constructor(earth:Earth) {
+    constructor(earth:Earth, weather:Weather) {
         this.earth = earth;
         this.bounds = new CenterLineBounds(earth.getBounds().getTopLine().getRandomPoint(), this.range);
         this.trees = [];

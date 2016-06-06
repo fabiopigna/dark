@@ -4,6 +4,7 @@ import {Point} from "../geometry/Point";
 import {Size} from "../geometry/Size";
 import {Tree} from "./Tree";
 import {Forest} from "./Forest";
+import {Weather} from "./Weather";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
@@ -14,9 +15,9 @@ export class Earth implements IUpdatable {
     private forests:Forest[];
 
 
-    constructor(worldSize:Size) {
+    constructor(worldSize:Size, weather:Weather) {
         this.bounds = new RectangleBounds(new Point(0, worldSize.height - 20), new Size(worldSize.width, 20));
-        this.forests = [new Forest(this)];
+        this.forests = [new Forest(this, weather)];
 
     }
 

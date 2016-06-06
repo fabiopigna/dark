@@ -6,7 +6,7 @@ import {ICollidable} from "../nature/interface/ICollidable";
 
 export class Collider {
 
-    static check(collidables:Array<ICollidable>) {
+    static check(collidables:Array<ICollidable>):[Array<ICollidable>, Array<ICollidable>] {
         var response = new SAT.Response();
         for (var i = 0; i < collidables.length; i++) {
             var collided = false;
