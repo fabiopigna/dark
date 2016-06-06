@@ -2,21 +2,18 @@ import {IUpdatable} from "./interface/IUpdatable";
 import {Weather} from "./Weather";
 import {Point} from "../geometry/Point";
 import {Life} from "./Life";
-import {CircleBounds} from "../geometry/CircleBounds";
-import {LoopLife} from "./LoopLife";
 import {RangedValue} from "../geometry/RangedValue";
 import {CloudC} from "./constants/NatureConstants";
 import {CloudBounds} from "../geometry/CloudBounds";
 import {RandomOption} from "../util/RandomOption";
-import {LineBounds} from "../geometry/LineBounds";
 import {Rain} from "./Rain";
 import {ICloudListener} from "./listeners/ICloudListener";
-import {Collidable} from "../util/Collider";
 import {ILiveable} from "./interface/ILiveable";
+import {ICollidable} from "./interface/ICollidable";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
-export class Cloud implements IUpdatable,Collidable,ILiveable {
+export class Cloud implements IUpdatable,ICollidable,ILiveable {
 
 
     private weather:Weather;
@@ -29,7 +26,7 @@ export class Cloud implements IUpdatable,Collidable,ILiveable {
     private randomWidth:RandomOption = new RandomOption(CloudC.MAX_WIDTH, CloudC.MAX_WIDTH * 0.2);
     private randomHeight:RandomOption = new RandomOption(CloudC.MAX_HEIGHT, CloudC.MAX_HEIGHT * 0.1);
     private rangedX:RangedValue;
-    private collide:boolean;
+    private raining:boolean;
 
     private listeners:ICloudListener[];
 
@@ -58,21 +55,22 @@ export class Cloud implements IUpdatable,Collidable,ILiveable {
     }
 
     startCollide() {
-        this.collide = true;
+        this.rain.setRaining(true);
+        this.raining = true;
         this.listeners.forEach((listener:ICloudListener)=> {
             listener.startRain();
         })
     }
 
     stopCollide() {
-        this.collide = false;
+        this.rain.setRaining(false);
         this.listeners.forEach((listener:ICloudListener)=> {
             listener.stopRain();
         })
     }
 
     isCollide():boolean {
-        return this.collide;
+        return this.rain.isRaining();
     }
 
     getBoundsCollidable():SAT.Polygon {

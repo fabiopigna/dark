@@ -9,6 +9,7 @@ import {Point} from "../geometry/Point";
 export class Rain implements IUpdatable {
 
     private rainBounds:LineBounds[];
+    private raining:boolean;
 
     constructor(weather:Weather, cloud:Cloud) {
         var cloudBounds = cloud.getBounds();
@@ -28,5 +29,13 @@ export class Rain implements IUpdatable {
 
     update(elapsed:number) {
 
+    }
+
+    isRaining() {
+        return this.raining;
+    }
+
+    setRaining(raining:boolean) {
+        this.raining = raining;
     }
 }

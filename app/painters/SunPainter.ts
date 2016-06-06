@@ -7,16 +7,18 @@ import Paper = Snap.Paper;
 export class SunPainter implements IPainter {
     private sun:Sun;
     private circle:Snap.Element;
+    private circleG:Snap.Paper;
 
     constructor(snap:Paper, sun:Sun) {
         this.sun = sun;
-        this.circle = snap.circle(0, 0, 10).attr({fill: '#666'});
+        this.circleG = snap.g();
+        this.circleG.node.setAttribute('transform', 'translate(' + this.sun.getBounds().x + ',' + this.sun.getBounds().y + ')');
+        this.circle = this.circleG.circle(this.sun.getBounds().r, this.sun.getBounds().r, this.sun.getBounds().r).attr({fill: '#666'});
     }
 
     repaint(elapsed:number) {
         var bounds = this.sun.getBounds();
-        this.circle.node.setAttribute('cx', '' + bounds.cx);
-        this.circle.node.setAttribute('cy', '' + bounds.cy);
+        this.circleG.node.setAttribute('transform', 'translate(' + bounds.x + ', ' + bounds.y + ')');
         this.circle.node.setAttribute('r', '' + bounds.r);
         this.circle.node.setAttribute('fill', Snap.hsl(0, 0, (0.2 + 0.8 * this.sun.getSunlight())).toString());
     }

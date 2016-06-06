@@ -1,17 +1,12 @@
+import {ICollidable} from "../nature/interface/ICollidable";
 /**
  * Created by fabiopigna on 05/06/2016.
  */
 
-export interface Collidable {
-    isCollide():boolean;
-    startCollide():void;
-    stopCollide():void;
-    getBoundsCollidable():SAT.Polygon;
-}
 
 export class Collider {
 
-    static check(collidables: Array<Collidable>) {
+    static check(collidables:Array<ICollidable>) {
         var response = new SAT.Response();
         for (var i = 0; i < collidables.length; i++) {
             var collided = false;

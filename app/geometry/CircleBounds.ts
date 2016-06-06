@@ -29,4 +29,16 @@ export class CircleBounds implements ISnapBounds {
     get r():number {
         return this._radius;
     }
+
+    get x():number {
+        return this._center.x - this._radius;
+    }
+
+    get y():number {
+        return this._center.y - this._radius;
+    }
+
+    set radius(radius:number) {
+        this._radius = radius;
+    }
 }
