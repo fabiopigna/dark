@@ -1,5 +1,5 @@
-import {IPainter} from "../nature/interface/IPainter";
-import {Tree} from "../nature/Tree";
+import {IPainter} from "../../nature/interface/IPainter";
+import {Tree} from "../../nature/vegetable/Tree";
 import Paper = Snap.Paper;
 /**
  * Created by fabiopigna on 02/06/2016.
@@ -13,7 +13,7 @@ export class TreePainter implements IPainter {
     constructor(snap:Paper, tree:Tree) {
         this.snap = snap;
         this.tree = tree;
-        this.path = snap.path().attr({stroke: '#bbb'});
+        this.path = snap.path().attr({stroke: '#555'});
     }
 
     repaint(elapsed:number) {

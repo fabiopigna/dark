@@ -1,9 +1,9 @@
-import {IUpdatable} from "./interface/IUpdatable";
-import {Point} from "../geometry/Point";
-import {PolygonBounds} from "../geometry/PolygonBounds";
+import {IUpdatable} from "../interface/IUpdatable";
+import {Point} from "../../geometry/Point";
+import {PolygonBounds} from "../../geometry/PolygonBounds";
 import {Forest} from "./Forest";
-import {TreeC} from "./constants/NatureConstants"
-import {Life} from "./Life";
+import {TreeC} from "../constants/NatureConstants"
+import {Life} from "../Life";
 
 /**
  * Created by fabiopigna on 02/06/2016.

@@ -1,10 +1,11 @@
 import {IPainter} from "../nature/interface/IPainter";
 import {Earth} from "../nature/Earth";
 import Paper = Snap.Paper;
-import {TreePainter} from "./TreePainter";
-import {Tree} from "../nature/Tree";
-import {Forest} from "../nature/Forest";
-import {ForestPainter} from "./ForestPainter";
+import {Forest} from "../nature/vegetable/Forest";
+import {ForestPainter} from "./vegetal/ForestPainter";
+import {FieldPainter} from "./vegetal/FieldPainter";
+import {Strawberry} from "../nature/vegetable/Strawberry";
+import {StrawberryPainter} from "./vegetal/StrawberryPainter";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
@@ -13,6 +14,7 @@ export class EarthPainter implements IPainter {
     private rect:Snap.Element;
     private line:Snap.Element;
     private forestPainters:ForestPainter[];
+    private strawberryFieldPainter;
 
     constructor(snap:Paper, earth:Earth) {
 
@@ -21,6 +23,9 @@ export class EarthPainter implements IPainter {
         this.forestPainters = earth.getForests().map((forest:Forest)=> {
             return new ForestPainter(snap, forest);
         });
+
+
+        this.strawberryFieldPainter = new FieldPainter(snap, earth.getStrawberryField(), StrawberryPainter);
 
 
     }

@@ -27,8 +27,6 @@ export class CloudPainter implements IPainter, ICloudListener {
 
     repaint(elapsed:number) {
         var origin = this.cloud.getBounds().getOrigin();
-        var matrix = Snap.matrix();
-        var ts = matrix.translate(origin.x, origin.y).toString();
         this.snapGroup.node.setAttribute('transform', 'translate(' + origin.x + ',' + origin.y + ')');
         this.rainPainter.repaint(elapsed);
     }

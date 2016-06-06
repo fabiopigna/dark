@@ -1,4 +1,4 @@
-import {Tree} from "../Tree";
+import {Tree} from "../vegetable/Tree";
 /**
  * Created by fabiopigna on 03/06/2016.
  */

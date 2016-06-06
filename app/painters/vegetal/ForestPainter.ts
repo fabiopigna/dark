@@ -1,8 +1,8 @@
 import {TreePainter} from "./TreePainter";
-import {Forest} from "../nature/Forest";
+import {Forest} from "../../nature/vegetable/Forest";
 import Paper = Snap.Paper;
-import {Tree} from "../nature/Tree";
-import {IForestListener} from "../nature/listeners/IForestListener";
+import {Tree} from "../../nature/vegetable/Tree";
+import {IForestListener} from "../../nature/listeners/IForestListener";
 /**
  * Created by fabiopigna on 03/06/2016.
  */

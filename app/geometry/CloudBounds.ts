@@ -13,6 +13,8 @@ export class CloudBounds extends PolygonBounds {
 
     private origin:Point;
     private bottomLine:LineBounds;
+    private boundsSAT:SAT.Polygon;
+    private originSAT:SAT.Vector;
 
     constructor(origin:Point, maxWidth:number, maxHeight:number) {
         var rectangleBounds = new RectangleBounds(new Point(0, 0), new Size(maxWidth, maxHeight));
@@ -27,12 +29,18 @@ export class CloudBounds extends PolygonBounds {
         var t1 = new PolygonBounds([bottomRightLine.firstPoint, topRightPoint, bottomRightLine.secondPoint]);
 
         super(t0.getPoints().concat(t1.getPoints()));
+
         this.origin = origin;
+        this.originSAT = new Vector(this.origin.x, this.origin.y);
+        this.boundsSAT = new Polygon(this.originSAT, this.getPoints().map((point:Point)=> {
+            return new Vector(point.x, point.y)
+        }));
         this.bottomLine = bottomLine;
     }
 
     translateX(x:number) {
         this.origin.x = x;
+        this.originSAT.x = x;
     }
 
     getOrigin():Point {
@@ -44,11 +52,7 @@ export class CloudBounds extends PolygonBounds {
     }
 
     toSAT():Polygon {
-        var originV:Vector = new Vector(this.origin.x, this.origin.y);
-        var pointsV:Vector[] = this.getPoints().map((point:Point)=> {
-            return new Vector(point.x, point.y)
-        });
-        return new Polygon(originV, pointsV);
+        return this.boundsSAT;
 
     }
 }
