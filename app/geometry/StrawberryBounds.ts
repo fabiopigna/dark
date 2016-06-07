@@ -1,33 +1,27 @@
 import {CurveBounds} from "./CurveBounds";
 import {Point} from "./Point";
+import {StrawberryC}  from "../nature/constants/NatureConstants";
 /**
  * Created by fabiopigna on 06/06/2016.
  */
 export class StrawberryBounds extends CurveBounds {
 
     private origin:Point;
-    private bottomLeft:Point;
-    private topLeft:Point;
-    private topRight:Point;
-    private bottomRight:Point;
+    private width:number = 30;
+    private height:number = 15;
+
+    
 
     constructor(origin:Point) {
-        var width = 30;
-        var height = 15;
-        var bottomLeft = new Point(12, 0);
-        var topLeft = new Point(0, -height);
-        var topRight = new Point(width, -height);
-        var bottomRight = new Point(width - 12, 0);
-        super([bottomLeft, topLeft, topRight, bottomRight]);
-        this.bottomLeft = bottomLeft;
-        this.topLeft = topLeft;
-        this.topRight = topRight;
-        this.bottomRight = bottomRight;
+        super([new Point(12, 0), new Point(0, -5), new Point(StrawberryC.MAX_WIDTH, -5), new Point(StrawberryC.MAX_WIDTH - 12, 0)]);
         this.origin = origin;
     }
 
     update(lifeNormalized:number) {
-
+        let [lb,lt, rt, rb] = this.getPoints();
+        var newH = -(5  + lifeNormalized*(this.height-5));
+        lt.y = newH;
+        rt.y = newH;
     }
 
     getOrigin():Point {
