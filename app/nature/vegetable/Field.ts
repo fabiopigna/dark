@@ -3,8 +3,6 @@ import {Earth} from "../Earth";
 import {IUpdatable} from "../interface/IUpdatable";
 import {RandomTimer} from "../../time/RandomTimer";
 import {FieldConfig} from "./FieldConfig";
-import {Cloud} from "../Cloud";
-import {IWeatherListener} from "../listeners/IWeatherListener";
 import {Death} from "../Death";
 import {IFieldListener} from "./IFieldListener";
 import {IVegetable} from "./IVegetable";

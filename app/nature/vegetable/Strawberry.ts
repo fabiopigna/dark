@@ -3,7 +3,6 @@ import {Field} from "./Field";
 import {Life} from "../Life";
 import {RandomOption} from "../../util/RandomOption";
 import {Point} from "../../geometry/Point";
-import {CurveBounds} from "../../geometry/CurveBounds";
 import {StrawberryBounds} from "../../geometry/StrawberryBounds";
 /**
  * Created by fabiopigna on 06/06/2016.

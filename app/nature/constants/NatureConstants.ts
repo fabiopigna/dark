@@ -21,3 +21,9 @@ export class WeatherC {
     static RAIN_COLOR:string = '#505050';
 
 }
+
+export class StrawberryC{
+    static MAX_HEIGHT:number = 15;
+    static MAX_WIDTH:number = 30;
+
+}

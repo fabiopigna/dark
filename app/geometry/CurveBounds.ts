@@ -27,4 +27,8 @@ export class CurveBounds implements ISnapBounds {
         // <path d="M130 110 C 120 140, 180 140, 170 110" stroke="black" fill="transparent"/>
         return path
     }
+
+    getPoints():Point[] {
+        return this.points;
+    }
 }
