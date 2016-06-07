@@ -3,11 +3,12 @@ import {Forest} from "../../nature/vegetable/Forest";
 import Paper = Snap.Paper;
 import {Tree} from "../../nature/vegetable/Tree";
 import {IForestListener} from "../../nature/listeners/IForestListener";
+import {IPainter} from "../../nature/interface/IPainter";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
 
-export class ForestPainter implements IForestListener {
+export class ForestPainter implements IForestListener, IPainter {
 
 
     private treePainters:TreePainter[];
@@ -22,9 +23,7 @@ export class ForestPainter implements IForestListener {
     }
 
     repaint(elapsed:number) {
-        this.treePainters.forEach((treePainter:TreePainter)=> {
-            treePainter.repaint(elapsed)
-        });
+        this.treePainters.forEach((treePainter:TreePainter)=> treePainter.repaint(elapsed));
     }
 
     treeCreated(newTree:Tree):void {
@@ -32,4 +31,7 @@ export class ForestPainter implements IForestListener {
     }
 
 
+    destroy():void {
+        this.treePainters.forEach((treePainter:TreePainter)=>treePainter.destroy());
+    }
 }

@@ -9,7 +9,7 @@ export class LandscapePainter implements IPainter {
 
     constructor(snap:Snap.Paper, landscape:Landscape) {
         this.polygons = landscape.getBounds().map((bounds, index)=> {
-            return snap.path().attr({fill: Snap.hsl(0, 0, 0.1+(0.01 * index))}).attr(bounds.toSnap());
+            return snap.path().attr({fill: Snap.hsl(0, 0, 0.1 + (0.01 * index))}).attr(bounds.toSnap());
         });
 
     }
@@ -18,4 +18,7 @@ export class LandscapePainter implements IPainter {
     }
 
 
+    destroy():void {
+        this.polygons.forEach((snapElement:Snap.Element)=>snapElement.remove())
+    }
 }

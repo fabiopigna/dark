@@ -21,4 +21,8 @@ export class TreePainter implements IPainter {
     }
 
 
+    destroy():void {
+        this.path.remove();
+    }
+
 }

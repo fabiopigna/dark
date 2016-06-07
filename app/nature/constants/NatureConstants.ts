@@ -24,6 +24,6 @@ export class WeatherC {
 
 export class StrawberryC{
     static MAX_HEIGHT:number = 15;
-    static MAX_WIDTH:number = 30;
+    static MAX_WIDTH:number = 25;
 
 }

@@ -4,11 +4,12 @@ import {Field} from "../../nature/vegetable/Field";
 import {IVegetable} from "../../nature/vegetable/IVegetable";
 import {IVegetablePainterConstructor} from "./IVegetablePainterConstructor";
 import {IVegetablePainter} from "./IVegetablePainter";
+import {IPainter} from "../../nature/interface/IPainter";
 /**
  * Created by fabiopigna on 06/06/2016.
  */
 
-export class FieldPainter implements IFieldListener {
+export class FieldPainter implements IFieldListener, IPainter {
 
 
     private vegetablePainters:IVegetablePainter[];
@@ -43,4 +44,7 @@ export class FieldPainter implements IFieldListener {
     }
 
 
+    destroy():void {
+        this.vegetablePainters.forEach((painter:IPainter)=>{painter.destroy()});
+    }
 }

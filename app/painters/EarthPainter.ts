@@ -14,7 +14,7 @@ export class EarthPainter implements IPainter {
     private rect:Snap.Element;
     private line:Snap.Element;
     private forestPainters:ForestPainter[];
-    private strawberryFieldPainter;
+    private strawberryFieldPainter:FieldPainter[];
 
     constructor(snap:Paper, earth:Earth) {
 
@@ -25,16 +25,21 @@ export class EarthPainter implements IPainter {
         });
 
 
-        this.strawberryFieldPainter = new FieldPainter(snap, earth.getStrawberryField(), StrawberryPainter);
+        this.strawberryFieldPainter = [];
+        this.strawberryFieldPainter.push(new FieldPainter(snap, earth.getStrawberryField(), StrawberryPainter));
 
 
     }
 
     repaint(elapsed:number) {
-        this.forestPainters.forEach((forestPainter:ForestPainter)=> {
-            forestPainter.repaint(elapsed)
-        });
+        this.forestPainters.forEach((forestPainter:ForestPainter)=> forestPainter.repaint(elapsed));
+        this.strawberryFieldPainter.forEach((strawberryFieldPainter:FieldPainter)=> strawberryFieldPainter.repaint(elapsed));
+
     }
 
 
+    destroy():void {
+        this.forestPainters.forEach((forestPainter:ForestPainter)=> forestPainter.destroy());
+        this.strawberryFieldPainter.forEach((fieldPainter:FieldPainter)=> fieldPainter.destroy());
+    }
 }

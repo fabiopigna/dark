@@ -35,7 +35,7 @@ export class Field implements IUpdatable {
         this.listeners = [];
         this.clock = new RandomTimer(config.minTime, config.rageTime);
         this.death = new Death<IVegetable>();
-        this.bounds = new CenterLineBounds(earth.getBounds().getTopLine().getRandomPoint(), 50);
+        this.bounds = new CenterLineBounds(earth.getBounds().getTopLine().getRandomPoint(), 250);
 
     }
 

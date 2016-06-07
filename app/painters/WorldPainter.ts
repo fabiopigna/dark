@@ -42,4 +42,10 @@ export class WorldPainter implements IPainter {
         this.weatherPainter.repaint(elapsed);
     }
 
+
+    destroy():void {
+        this.earthPainter.destroy();
+        this.sunPainter.destroy();
+        this.weatherPainter.destroy();
+    }
 }

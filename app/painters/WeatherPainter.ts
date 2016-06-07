@@ -3,11 +3,12 @@ import {Weather} from "../nature/Weather";
 import Paper = Snap.Paper;
 import {Cloud} from "../nature/Cloud";
 import {IWeatherListener} from "../nature/listeners/IWeatherListener";
+import {IPainter} from "../nature/interface/IPainter";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
 
-export class WeatherPainter implements IWeatherListener {
+export class WeatherPainter implements IPainter,IWeatherListener {
 
 
     private cloudPainters:CloudPainter[];
@@ -38,5 +39,10 @@ export class WeatherPainter implements IWeatherListener {
         })[0];
         cloudPainterToRemove.destroy();
         this.cloudPainters.remove(cloudPainterToRemove);
+    }
+
+
+    destroy():void {
+        this.cloudPainters.forEach((painter:IPainter)=>painter.destroy());
     }
 }

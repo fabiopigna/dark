@@ -22,4 +22,9 @@ export class SunPainter implements IPainter {
         this.circle.node.setAttribute('r', '' + bounds.r);
         this.circle.node.setAttribute('fill', Snap.hsl(0, 0, (0.2 + 0.8 * this.sun.getSunlight())).toString());
     }
+
+
+    destroy():void {
+        this.circleG.remove();
+    }
 }

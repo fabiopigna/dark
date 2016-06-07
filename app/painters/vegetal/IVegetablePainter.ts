@@ -5,5 +5,5 @@ import {IVegetable} from "../../nature/vegetable/IVegetable";
  */
 export interface IVegetablePainter extends IPainter {
     getVegetable():IVegetable;
-    destroy():void;
+ 
 }

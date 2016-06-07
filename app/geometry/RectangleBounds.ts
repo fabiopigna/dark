@@ -38,12 +38,36 @@ export class RectangleBounds implements ISnapBounds {
         return this.origin;
     }
 
+    set x(x:number) {
+        this.origin.x = x;
+    }
+
+    set y(y:number) {
+        this.origin.y = y;
+    }
+
+    get x():number {
+        return this.origin.x;
+    }
+
+    get y():number {
+        return this.origin.y;
+    }
+
     get width():number {
         return this.size.width;
     }
 
     get height():number {
         return this.size.height;
+    }
+
+    set width(width:number) {
+        this.size.width = width;
+    }
+
+    set height(height:number) {
+        this.size.height = height;
     }
 
     right():number {
