@@ -3,6 +3,6 @@
  */
 export interface IUpdatable{
 
-    update(elapsed:number);
+    update(elapsed:number):void;
 
 }

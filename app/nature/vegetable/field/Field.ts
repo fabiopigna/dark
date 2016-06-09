@@ -1,14 +1,14 @@
-import {Weather} from "../Weather";
-import {Earth} from "../Earth";
-import {IUpdatable} from "../interface/IUpdatable";
-import {RandomTimer} from "../../time/RandomTimer";
+import {Weather} from "../../Weather";
+import {Earth} from "../../Earth";
+import {IUpdatable} from "../../interface/IUpdatable";
+import {RandomTimer} from "../../../time/RandomTimer";
 import {FieldConfig} from "./FieldConfig";
-import {Death} from "../Death";
-import {IFieldListener} from "./IFieldListener";
-import {IVegetable} from "./IVegetable";
-import {IVegetableConstructor} from "./IVegetableConstructor";
-import {LineBounds} from "../../geometry/LineBounds";
-import {CenterLineBounds} from "../../geometry/CenterLineBounds";
+import {Death} from "../../Death";
+import {IFieldListener} from "../IFieldListener";
+import {IVegetable} from "../IVegetable";
+import {IVegetableConstructor} from "../IVegetableConstructor";
+import {LineBounds} from "../../../geometry/LineBounds";
+import {CenterLineBounds} from "../../../geometry/CenterLineBounds";
 /**
  * Created by fabiopigna on 06/06/2016.
  */
@@ -33,10 +33,9 @@ export class Field implements IUpdatable {
         this.ctor = ctor;
         this.vegetables = [];
         this.listeners = [];
-        this.clock = new RandomTimer(config.minTime, config.rageTime);
+        this.clock = new RandomTimer(config.minTime, config.rangeTime);
         this.death = new Death<IVegetable>();
-        this.bounds = new CenterLineBounds(earth.getBounds().getTopLine().getRandomPoint(), 250);
-
+        this.bounds = new CenterLineBounds(earth.getBounds().getTopLine().getRandomPoint(), 50);
     }
 
 

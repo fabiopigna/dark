@@ -56,10 +56,15 @@ export class LineBounds implements ISnapBounds {
         return points;
     }
 
-
-    toSnap():{} {
+    toSnapString():string {
         var path = 'M ' + this._firstPoint.x + ' ' + this._firstPoint.y;
         path += ' L ' + this._secondPoint.x + ' ' + this._secondPoint.y;
-        return {d: path};
+        return path;
     }
+
+    toSnap():{} {
+        return {d: this.toSnapString()};
+    }
+
+
 }

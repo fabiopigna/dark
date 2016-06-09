@@ -1,5 +1,5 @@
 import {IVegetable} from "../IVegetable";
-import {Field} from "../Field";
+import {Field} from "../field/Field";
 import {Life} from "../../Life";
 import {RandomOption} from "../../../util/RandomOption";
 import {Point} from "../../../geometry/Point";

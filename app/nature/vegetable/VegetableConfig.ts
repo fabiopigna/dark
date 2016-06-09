@@ -5,10 +5,12 @@ import {Percent} from "../../util/Percent";
 export class VegetableConfig {
     timeToGrowBase:number;
     timeToGrowPercent:Percent;
+    timeToDie:number;
 
 
-    constructor(timeToGrowBase:number, timeToGrowPercent:Percent) {
+    constructor(timeToGrowBase:number, timeToGrowPercent:Percent, timeToDie?:number) {
         this.timeToGrowBase = timeToGrowBase;
         this.timeToGrowPercent = timeToGrowPercent;
+        this.timeToDie = timeToDie;
     }
 }

@@ -1,5 +1,5 @@
 import {IVegetable} from "./IVegetable";
-import {Field} from "./Field";
+import {Field} from "./field/Field";
 import {Life} from "../Life";
 import {Point} from "../../geometry/Point";
 import {VegetableConfig} from "./VegetableConfig";
@@ -15,8 +15,13 @@ export abstract class Vegetable implements IVegetable {
     constructor(field:Field, config:VegetableConfig) {
         this.field = field;
         this.root = field.getBounds().getRandomPoint();
-        this.life = new Life(config.timeToGrowBase, config.timeToGrowPercent);
+        this.life = new Life(config.timeToGrowBase, config.timeToGrowPercent, config.timeToDie);
     }
+
+    getRoot():Point {
+        return this.root;
+    }
+
 
     getField():Field {
         return this.field;

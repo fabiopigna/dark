@@ -1,4 +1,4 @@
-import {Field} from "./Field";
+import {Field} from "./field/Field";
 import {IVegetable} from "./IVegetable";
 import {VegetableConfig} from "./VegetableConfig";
 /**

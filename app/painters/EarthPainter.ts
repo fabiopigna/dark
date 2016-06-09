@@ -3,11 +3,10 @@ import {Earth} from "../nature/Earth";
 import Paper = Snap.Paper;
 import {Forest} from "../nature/vegetable/Forest";
 import {ForestPainter} from "./vegetal/ForestPainter";
-import {FieldPainter} from "./vegetal/FieldPainter";
-import {Strawberry} from "../nature/vegetable/strawberry/Strawberry";
+import {FieldPainter} from "../nature/vegetable/field/FieldPainter";
 import {StrawberryPainter} from "../nature/vegetable/strawberry/StrawberryPainter";
 import {GrainPainter} from "../nature/vegetable/grain/GrainPainter";
-import {Field} from "../nature/vegetable/Field";
+import {Field} from "../nature/vegetable/field/Field";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
@@ -23,10 +22,8 @@ export class EarthPainter implements IPainter {
 
         this.rect = snap.rect(0, 0, 0, 0).attr({fill: '#222'}).attr(earth.getBounds().toSnap());
         this.line = snap.path().attr({stroke: '#aaa'}).attr(earth.getBounds().getTopLine().toSnap());
-        
         this.forestPainters = earth.getForests().map((forest:Forest)=> new ForestPainter(snap, forest));
-        this.strawberryFieldPainter = [];
-        this.strawberryFieldPainter.push(new FieldPainter(snap, earth.getStrawberryField(), StrawberryPainter));
+        this.strawberryFieldPainter = earth.getStrawberryField().map((field:Field)=>new FieldPainter(snap, field, StrawberryPainter));
         this.grainFieldPainters = earth.getGrainFields().map((field:Field)=>new FieldPainter(snap, field, GrainPainter));
 
 

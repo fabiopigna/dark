@@ -27,3 +27,7 @@ export class StrawberryC{
     static MAX_WIDTH:number = 25;
 
 }
+
+export class GrainC{
+    static MAX_HEIGHT:number = 10;
+}

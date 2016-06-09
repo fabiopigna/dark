@@ -32,4 +32,8 @@ export class Point {
         this.y += deltaY;
         return this;
     }
+
+    copy():Point{
+        return new Point(this.x, this.y);
+    }
 }
