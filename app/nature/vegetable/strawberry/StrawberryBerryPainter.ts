@@ -1,7 +1,7 @@
-import {IPainter} from "../../nature/interface/IPainter";
-import {Strawberry} from "../../nature/vegetable/Strawberry";
+import {IPainter} from "../../interface/IPainter";
+import {Strawberry} from "./Strawberry";
 import Paper = Snap.Paper;
-import {Point} from "../../geometry/Point";
+import {Point} from "../../../geometry/Point";
 /**
  * Created by fabiopigna on 07/06/2016.
  */

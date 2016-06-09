@@ -4,8 +4,10 @@ import Paper = Snap.Paper;
 import {Forest} from "../nature/vegetable/Forest";
 import {ForestPainter} from "./vegetal/ForestPainter";
 import {FieldPainter} from "./vegetal/FieldPainter";
-import {Strawberry} from "../nature/vegetable/Strawberry";
-import {StrawberryPainter} from "./vegetal/StrawberryPainter";
+import {Strawberry} from "../nature/vegetable/strawberry/Strawberry";
+import {StrawberryPainter} from "../nature/vegetable/strawberry/StrawberryPainter";
+import {GrainPainter} from "../nature/vegetable/grain/GrainPainter";
+import {Field} from "../nature/vegetable/Field";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
@@ -15,25 +17,25 @@ export class EarthPainter implements IPainter {
     private line:Snap.Element;
     private forestPainters:ForestPainter[];
     private strawberryFieldPainter:FieldPainter[];
+    private grainFieldPainters:FieldPainter[];
 
     constructor(snap:Paper, earth:Earth) {
 
         this.rect = snap.rect(0, 0, 0, 0).attr({fill: '#222'}).attr(earth.getBounds().toSnap());
         this.line = snap.path().attr({stroke: '#aaa'}).attr(earth.getBounds().getTopLine().toSnap());
-        this.forestPainters = earth.getForests().map((forest:Forest)=> {
-            return new ForestPainter(snap, forest);
-        });
-
-
+        
+        this.forestPainters = earth.getForests().map((forest:Forest)=> new ForestPainter(snap, forest));
         this.strawberryFieldPainter = [];
         this.strawberryFieldPainter.push(new FieldPainter(snap, earth.getStrawberryField(), StrawberryPainter));
+        this.grainFieldPainters = earth.getGrainFields().map((field:Field)=>new FieldPainter(snap, field, GrainPainter));
 
 
     }
 
     repaint(elapsed:number) {
-        this.forestPainters.forEach((forestPainter:ForestPainter)=> forestPainter.repaint(elapsed));
-        this.strawberryFieldPainter.forEach((strawberryFieldPainter:FieldPainter)=> strawberryFieldPainter.repaint(elapsed));
+        this.forestPainters.forEach((painter:ForestPainter)=> painter.repaint(elapsed));
+        this.strawberryFieldPainter.forEach((painter:FieldPainter)=> painter.repaint(elapsed));
+        this.grainFieldPainters.forEach((painter:FieldPainter)=> painter.repaint(elapsed));
 
     }
 
@@ -41,5 +43,6 @@ export class EarthPainter implements IPainter {
     destroy():void {
         this.forestPainters.forEach((forestPainter:ForestPainter)=> forestPainter.destroy());
         this.strawberryFieldPainter.forEach((fieldPainter:FieldPainter)=> fieldPainter.destroy());
+        this.grainFieldPainters.forEach((painter:FieldPainter)=> painter.destroy());
     }
 }

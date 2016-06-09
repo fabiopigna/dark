@@ -3,6 +3,7 @@ import {LineBounds} from "../geometry/LineBounds";
 import {WeatherC} from "../nature/constants/NatureConstants";
 import {RandomPercent} from "../util/RandomPercent";
 import {ICloudListener} from "../nature/listeners/ICloudListener";
+import {Percent} from "../util/Percent";
 /**
  * Created by fabiopigna on 05/06/2016.
  */
@@ -23,8 +24,8 @@ export class RainDropPainter implements IPainter,ICloudListener {
             visibility: 'hidden'
         });
         this.snapRain.attr(rainBounds.toSnap());
-        this.dashOffset = new RandomPercent(this.rainDropSize, 0.5).getRandomRound();
-        this.timeToDrop = new RandomPercent(WeatherC.RAIN_TIME_TO_DROP, 0.2).getRandomRound();
+        this.dashOffset = new RandomPercent(this.rainDropSize, Percent.valueOf(0.5)).getRandomRound();
+        this.timeToDrop = new RandomPercent(WeatherC.RAIN_TIME_TO_DROP, Percent.valueOf(0.2)).getRandomRound();
     }
 
     repaint(elapsed:number) {

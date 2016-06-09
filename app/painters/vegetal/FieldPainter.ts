@@ -2,8 +2,8 @@ import Paper = Snap.Paper;
 import {IFieldListener} from "../../nature/vegetable/IFieldListener";
 import {Field} from "../../nature/vegetable/Field";
 import {IVegetable} from "../../nature/vegetable/IVegetable";
-import {IVegetablePainterConstructor} from "./IVegetablePainterConstructor";
-import {IVegetablePainter} from "./IVegetablePainter";
+import {IVegetablePainterConstructor} from "../../nature/vegetable/IVegetablePainterConstructor";
+import {IVegetablePainter} from "../../nature/vegetable/IVegetablePainter";
 import {IPainter} from "../../nature/interface/IPainter";
 /**
  * Created by fabiopigna on 06/06/2016.

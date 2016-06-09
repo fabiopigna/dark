@@ -48,6 +48,14 @@ export class LineBounds implements ISnapBounds {
         return new Point(x, y);
     }
 
+    getRandomPoints(n:number):Point[] {
+        var points:Point[] = [];
+        for (var i = 0; i < n; i++) {
+            points.push(this.getRandomPoint());
+        }
+        return points;
+    }
+
 
     toSnap():{} {
         var path = 'M ' + this._firstPoint.x + ' ' + this._firstPoint.y;

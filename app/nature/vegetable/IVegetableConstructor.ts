@@ -1,5 +1,6 @@
 import {Field} from "./Field";
 import {IVegetable} from "./IVegetable";
+import {VegetableConfig} from "./VegetableConfig";
 /**
  * Created by fabiopigna on 06/06/2016.
  */

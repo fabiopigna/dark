@@ -4,6 +4,7 @@ import {PolygonBounds} from "../../geometry/PolygonBounds";
 import {Forest} from "./Forest";
 import {TreeC} from "../constants/NatureConstants"
 import {Life} from "../Life";
+import {Percent} from "../../util/Percent";
 
 /**
  * Created by fabiopigna on 02/06/2016.
@@ -18,10 +19,11 @@ export class Tree implements IUpdatable {
     private top:Point;
     private right:Point;
 
+
     constructor(forest:Forest) {
         this.forest = forest;
         this.root = forest.getBounds().getRandomPoint();
-        this.life = new Life(TreeC.LIFE_TIME_TO_GROW, Infinity);
+        this.life = new Life(TreeC.LIFE_TIME_TO_GROW, Percent.valueOf(0), Infinity);
         this.left = new Point(this.root.x - this.life.normalized() * 0.5 * TreeC.WIDTH, this.root.y - TreeC.DISTANCE_FROM_EARTH);
         this.top = new Point(this.root.x, this.root.y - this.life.normalized() * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH);
         this.right = new Point(this.root.x + this.life.normalized() * 0.5 * TreeC.WIDTH, this.root.y - TreeC.DISTANCE_FROM_EARTH);

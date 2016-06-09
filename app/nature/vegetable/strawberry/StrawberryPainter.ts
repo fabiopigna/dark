@@ -1,7 +1,6 @@
-import {IPainter} from "../../nature/interface/IPainter";
-import {IVegetablePainter} from "./IVegetablePainter";
-import {IVegetable} from "../../nature/vegetable/IVegetable";
-import {Strawberry} from "../../nature/vegetable/Strawberry";
+import {IVegetablePainter} from "../IVegetablePainter";
+import {IVegetable} from "../IVegetable";
+import {Strawberry} from "./Strawberry";
 import {StrawberryBerryPainter} from "./StrawberryBerryPainter";
 /**
  * Created by fabiopigna on 06/06/2016.

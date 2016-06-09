@@ -1,3 +1,5 @@
+import {Percent} from "../util/Percent";
+import {RandomPercent} from "../util/RandomPercent";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
@@ -8,10 +10,10 @@ export class Life {
     private lifeTime:number;
     private timeToDie:number;
 
-    constructor(lifeGrowTime:number, timeToDie?:number) {
-        this.timeToDie = timeToDie ? timeToDie : lifeGrowTime;
+    constructor(timeToGrow:number, percent:Percent, timeToDie:number = timeToGrow) {
+        this.timeToDie = timeToDie;
+        this.lifeGrowTime = new RandomPercent(timeToGrow, percent).getRandom();
         this.lifeNormalized = 0;
-        this.lifeGrowTime = lifeGrowTime;
     }
 
     update(elapsed:number) {

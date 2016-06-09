@@ -1,4 +1,4 @@
-import {IVegetable} from "../../nature/vegetable/IVegetable";
+import {IVegetable} from "./IVegetable";
 import {IVegetablePainter} from "./IVegetablePainter";
 /**
  * Created by fabiopigna on 06/06/2016.
