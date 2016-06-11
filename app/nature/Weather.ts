@@ -3,7 +3,7 @@ import {RandomTimer} from "../time/RandomTimer";
 import {Cloud} from "./Cloud";
 import {IWeatherListener} from "./listeners/IWeatherListener";
 import {LineBounds} from "../geometry/LineBounds";
-import {IForestListener} from "./listeners/IForestListener";
+import {IForestLayerListener} from "./vegetable/forest/IForestLayerListener";
 import {RectangleBounds} from "../geometry/RectangleBounds";
 import {Size} from "../geometry/Size";
 import {CloudC} from "./constants/NatureConstants";

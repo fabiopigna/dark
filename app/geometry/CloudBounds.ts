@@ -6,6 +6,7 @@ import {RandomOption} from "../util/RandomOption";
 import {PolygonBounds} from "./PolygonBounds";
 import Polygon = SAT.Polygon;
 import Vector = SAT.Vector;
+import {Delta} from "./Delta";
 /**
  * Created by fabiopigna on 04/06/2016.
  */
@@ -23,8 +24,8 @@ export class CloudBounds extends PolygonBounds {
         var bottomLeftLine = new LineBounds(bottomLine.firstPoint, middlePoint);
         var bottomRightLine = new LineBounds(middlePoint, bottomLine.secondPoint);
 
-        var topLeftPoint = bottomLeftLine.getRandomPoint(new RandomOption(0.5, 0.3)).moveBy(0, -maxHeight);
-        var topRightPoint = bottomRightLine.getRandomPoint(new RandomOption(0.5, 0.3)).moveBy(0, -maxHeight);
+        var topLeftPoint = bottomLeftLine.getRandomPoint(new RandomOption(0.5, 0.3)).moveBy(new Delta(0, -maxHeight));
+        var topRightPoint = bottomRightLine.getRandomPoint(new RandomOption(0.5, 0.3)).moveBy(new Delta(0, -maxHeight));
         var t0 = new PolygonBounds([bottomLeftLine.firstPoint, topLeftPoint, bottomLeftLine.secondPoint]);
         var t1 = new PolygonBounds([bottomRightLine.firstPoint, topRightPoint, bottomRightLine.secondPoint]);
 

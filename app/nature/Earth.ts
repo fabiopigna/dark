@@ -6,8 +6,9 @@ import {Weather} from "./Weather";
 import {Field} from "./vegetable/field/Field";
 import {Strawberry} from "./vegetable/strawberry/Strawberry";
 import {FieldConfig} from "./vegetable/field/FieldConfig";
-import {Forest} from "./vegetable/Forest";
+import {Forest} from "./vegetable/forest/Forest";
 import {Grain} from "./vegetable/grain/Grain";
+import {ForestConfig} from "./vegetable/forest/ForestConfig";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
@@ -17,12 +18,13 @@ export class Earth implements IUpdatable {
     private bounds:RectangleBounds;
     private forests:Forest[];
     private strawberryField:Field[] = [];
+    private forestConfig = new ForestConfig(3);
     private grainFields:Field[] = [];
 
 
     constructor(worldSize:Size, weather:Weather) {
         this.bounds = new RectangleBounds(new Point(0, worldSize.height - 20), new Size(worldSize.width, 20));
-        this.forests = [new Forest(this, weather)];
+        this.forests = [new Forest(this, weather, this.forestConfig)];
         // this.strawberryField = new Field(this, weather, Strawberry, new FieldConfig(1000, 1000, 5));
         this.grainFields = [];
         this.grainFields.push(new Field(this, weather, Grain, new FieldConfig(1000, 1000, 20)));

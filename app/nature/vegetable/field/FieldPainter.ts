@@ -1,5 +1,5 @@
 import Paper = Snap.Paper;
-import {IFieldListener} from "../IFieldListener";
+import {IFieldListener} from "./IFieldListener";
 import {Field} from "./Field";
 import {IVegetable} from "../IVegetable";
 import {IVegetablePainterConstructor} from "../IVegetablePainterConstructor";

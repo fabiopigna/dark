@@ -1,6 +1,8 @@
 import {Point} from "./Point";
 import {ISnapBounds} from "../nature/interface/ISnapBounds";
 import {RandomOption} from "../util/RandomOption";
+import {Size} from "./Size";
+import {Delta} from "./Delta";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
@@ -31,6 +33,10 @@ export class LineBounds implements ISnapBounds {
 
     get secondPoint():Point {
         return this._secondPoint;
+    }
+
+    translate(delta:Delta):LineBounds {
+        return new LineBounds(this.firstPoint.copy().moveBy(delta), this.secondPoint.copy().moveBy(delta));
     }
 
     getRandomPoint(randomOption?:RandomOption):Point {

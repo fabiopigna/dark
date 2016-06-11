@@ -25,4 +25,8 @@ export class RandomOption {
         return min + Math.random() * range
     }
 
+    getRandomRound():number{
+        return Math.round(this.getRandom());
+    }
+
 }

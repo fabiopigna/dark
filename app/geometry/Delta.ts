@@ -1,6 +1,7 @@
-import {Delta} from "./Delta";
-export class Point {
-
+/**
+ * Created by fabiopigna on 10/06/2016.
+ */
+export class Delta{
     private _x:number;
     private _y:number;
 
@@ -26,15 +27,5 @@ export class Point {
 
     set y(value:number) {
         this._y = value;
-    }
-
-    moveBy(delta:Delta):Point {
-        this.x += delta.x;
-        this.y += delta.y;
-        return this;
-    }
-
-    copy():Point {
-        return new Point(this.x, this.y);
     }
 }

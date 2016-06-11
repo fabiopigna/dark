@@ -1,4 +1,4 @@
-import {IVegetable} from "./IVegetable";
+import {IVegetable} from "../IVegetable";
 /**
  * Created by fabiopigna on 06/06/2016.
  */
