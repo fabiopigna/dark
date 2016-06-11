@@ -1,14 +1,13 @@
+import {FieldConfig} from "../vegetable/field/FieldConfig";
+import {Grain} from "../vegetable/grain/Grain";
+import {VegetableConfig} from "../vegetable/VegetableConfig";
+import {Percent} from "../../util/Percent";
+import {VegetablePaintConfig} from "../vegetable/VegetablePaintConfig";
+import {StrawberryPainter} from "../vegetable/strawberry/StrawberryPainter";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
 
-export class TreeC {
-    static LIFE_TIME_TO_GROW:number = 10000;
-    static WIDTH:number = 30;
-    static DISTANCE_FROM_EARTH:number = 2;
-    static MIN_HEIGHT:number = 5;
-    static MAX_HEIGHT:number = 80;
-}
 export class CloudC {
     static LIFE_TIME_TO_LOOP:number = 25000;
     static MAX_HEIGHT:number = 20;
@@ -22,12 +21,12 @@ export class WeatherC {
 
 }
 
-export class StrawberryC{
+export class StrawberryC {
     static MAX_HEIGHT:number = 15;
     static MAX_WIDTH:number = 25;
 
+    static PAINT_CONFIG = new VegetablePaintConfig()
+        .setPaintConstructor(StrawberryPainter);
+
 }
 
-export class GrainC{
-    static MAX_HEIGHT:number = 10;
-}

@@ -1,6 +1,7 @@
 import {IVegetablePainter} from "../IVegetablePainter";
 import {IVegetable} from "../IVegetable";
 import {Grain} from "./Grain";
+import {Color} from "../../../util/Color";
 
 /**
  * Created by fabiopigna on 08/06/2016.
@@ -12,7 +13,7 @@ export class GrainPainter implements IVegetablePainter {
 
     constructor(snap:Snap.Paper, grain:Grain) {
         this.grain = grain;
-        this.snapGrain = snap.path().attr({stroke:'#aaa'});
+        this.snapGrain = snap.path().attr({stroke:new Color(0.7, 0.1).byLevel(grain.getLevel())});
      }
 
     getVegetable():IVegetable {

@@ -4,31 +4,35 @@ import {Point} from "../geometry/Point";
 import {Size} from "../geometry/Size";
 import {Weather} from "./Weather";
 import {Field} from "./vegetable/field/Field";
-import {Strawberry} from "./vegetable/strawberry/Strawberry";
-import {FieldConfig} from "./vegetable/field/FieldConfig";
-import {Forest} from "./vegetable/forest/Forest";
-import {Grain} from "./vegetable/grain/Grain";
-import {ForestConfig} from "./vegetable/forest/ForestConfig";
+import {GrainC} from "./vegetable/grain/GrainC";
+import {TreeC} from "./vegetable/tree/TreeC";
+import {Human} from "./mankind/Human";
+import {HumanC} from "./mankind/HumanC";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
+
 export class Earth implements IUpdatable {
 
 
     private bounds:RectangleBounds;
-    private forests:Forest[];
+    private treeFields:Field[];
     private strawberryField:Field[] = [];
-    private forestConfig = new ForestConfig(3);
     private grainFields:Field[] = [];
+    private humans:Human[];
 
 
     constructor(worldSize:Size, weather:Weather) {
         this.bounds = new RectangleBounds(new Point(0, worldSize.height - 20), new Size(worldSize.width, 20));
-        this.forests = [new Forest(this, weather, this.forestConfig)];
-        // this.strawberryField = new Field(this, weather, Strawberry, new FieldConfig(1000, 1000, 5));
+
+        this.treeFields = [];
+        this.treeFields.push(new Field(this, TreeC.FIELD_CONFIG));
+
         this.grainFields = [];
-        this.grainFields.push(new Field(this, weather, Grain, new FieldConfig(1000, 1000, 20)));
-        this.grainFields.push(new Field(this, weather, Grain, new FieldConfig(1000, 1000, 20)));
+        this.grainFields.push(new Field(this, GrainC.FIELD_CONFIG));
+        this.grainFields.push(new Field(this, GrainC.FIELD_CONFIG));
+        
+        this.humans = [new Human(this, HumanC.LIFE_CONFIG)];
     }
 
 
@@ -44,13 +48,18 @@ export class Earth implements IUpdatable {
         return this.grainFields;
     }
 
-    getForests():Forest[] {
-        return this.forests;
+    getTreeFields():Field[] {
+        return this.treeFields;
+    }
+
+    getHumans():Human[]{
+        return this.humans;
     }
 
     update(elapsed:number) {
-        this.forests.forEach((forest:Forest)=> forest.update(elapsed));
+        this.treeFields.forEach((field:Field)=>field.update(elapsed));
         this.strawberryField.forEach((field:Field)=>field.update(elapsed));
         this.grainFields.forEach((field:Field)=>field.update(elapsed));
+        this.humans.forEach((human:Human)=>human.update(elapsed));
     }
 }

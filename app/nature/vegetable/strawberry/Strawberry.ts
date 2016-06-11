@@ -1,5 +1,5 @@
 import {IVegetable} from "../IVegetable";
-import {Field} from "../field/Field";
+import {FieldLayer} from "../field/FieldLayer";
 import {Life} from "../../Life";
 import {RandomOption} from "../../../util/RandomOption";
 import {Point} from "../../../geometry/Point";
@@ -11,13 +11,13 @@ import {Percent} from "../../../util/Percent";
  */
 
 export class Strawberry implements IVegetable {
-    private field:Field;
+    private field:FieldLayer;
     private life:Life;
     private bounds:StrawberryBounds;
     private root:Point;
     private berriesBounds:Point[];
 
-    constructor(field:Field) {
+    constructor(field:FieldLayer) {
         this.field = field;
         this.root = field.getBounds().getRandomPoint();
         this.life = new Life(20000, new Percent(0.25) , Infinity);

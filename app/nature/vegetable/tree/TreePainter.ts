@@ -1,12 +1,13 @@
-import {IPainter} from "../../../interface/IPainter";
 import {Tree} from "./Tree";
 import Paper = Snap.Paper;
-import {Color} from "../../../../util/Color";
+import {IVegetablePainter} from "../IVegetablePainter";
+import {IVegetable} from "../IVegetable";
+import {Color} from "../../../util/Color";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
 
-export class TreePainter implements IPainter {
+export class TreePainter implements IVegetablePainter {
     private tree:Tree;
     private snap:Snap.Paper;
     private path:Snap.Element;
@@ -21,9 +22,11 @@ export class TreePainter implements IPainter {
         this.path.node.setAttribute('d', this.tree.getBounds().toSnapString());
     }
 
-
     destroy():void {
         this.path.remove();
     }
 
+    getVegetable():IVegetable {
+        return this.tree;
+    }
 }
