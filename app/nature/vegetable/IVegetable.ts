@@ -5,4 +5,6 @@ import {ILiveable} from "../interface/ILiveable";
  */
 export interface IVegetable extends IUpdatable,ILiveable {
 
+    harvest():number;
+
 }

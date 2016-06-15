@@ -36,7 +36,7 @@ export class StrawberryPainter implements IVegetablePainter {
         var bounds = this.strawberry.getBounds();
         this.snapStrawberryBush.node.setAttribute('x',bounds.x.toString());
         this.snapStrawberryBush.node.setAttribute('y', bounds.y.toString());
-        this.snapStrawberryBush.node.setAttribute('width', bounds.width.toString());
+        this.snapStrawberryBush.node.setAttribute('WIDTH', bounds.width.toString());
         this.snapStrawberryBush.node.setAttribute('height', bounds.height.toString());
         this.strawberryBerryPainter.repaint(elapsed)
 

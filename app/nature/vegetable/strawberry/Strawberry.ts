@@ -16,7 +16,6 @@ export class Strawberry implements IVegetable {
     private bounds:StrawberryBounds;
     private root:Point;
     private berriesBounds:Point[];
-
     constructor(field:FieldLayer) {
         this.field = field;
         this.root = field.getBounds().getRandomPoint();
@@ -32,6 +31,10 @@ export class Strawberry implements IVegetable {
 
     getLife():Life {
         return this.life;
+    }
+
+    harvest():number {
+        return 0;
     }
 
     update(elapsed:number) {

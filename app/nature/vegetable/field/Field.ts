@@ -28,5 +28,5 @@ export class Field implements IUpdatable {
     update(elapsed:number) {
         this.fieldLayers.forEach((updatable:IUpdatable)=>updatable.update(elapsed));
     }
-
+    
 }

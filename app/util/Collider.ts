@@ -1,10 +1,15 @@
 import {ICollidable} from "../nature/interface/ICollidable";
+import {ICollidableBounds} from "./ICollidableBounds";
 /**
  * Created by fabiopigna on 05/06/2016.
  */
 
 
 export class Collider {
+    static isColliding(first:ICollidableBounds, second:ICollidableBounds):boolean {
+        var response = new SAT.Response();
+        return SAT.testPolygonPolygon(first.getCollidableBounds(), second.getCollidableBounds(), response);
+    }
 
     static check(collidables:Array<ICollidable>) {
         var response = new SAT.Response();

@@ -3,18 +3,24 @@ import {ISnapBounds} from "../nature/interface/ISnapBounds";
 import {RandomOption} from "../util/RandomOption";
 import {Size} from "./Size";
 import {Delta} from "./Delta";
+import Vector = SAT.Vector;
+import Polygon = SAT.Polygon;
+import {ICollidableBounds} from "../util/ICollidableBounds";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
 
-export class LineBounds implements ISnapBounds {
+export class LineBounds implements ISnapBounds,ICollidableBounds {
     private _firstPoint:Point;
     private _secondPoint:Point;
+    private originSAT:Vector;
+    private boundsSAT:Polygon;
 
     constructor(firstPoint:Point, secondPoint:Point) {
         this._firstPoint = firstPoint;
         this._secondPoint = secondPoint;
-
+        this.originSAT = new Vector(this._firstPoint.x, this._firstPoint.y);
+        this.boundsSAT = new Polygon(this.originSAT, [new Vector(0, 0), new Vector(secondPoint.x - firstPoint.x, secondPoint.y - firstPoint.y)]);
     }
 
     getCenter():Point {
@@ -66,6 +72,11 @@ export class LineBounds implements ISnapBounds {
         var path = 'M ' + this._firstPoint.x + ' ' + this._firstPoint.y;
         path += ' L ' + this._secondPoint.x + ' ' + this._secondPoint.y;
         return path;
+    }
+
+
+    getCollidableBounds():SAT.Polygon {
+        return this.boundsSAT;
     }
 
     toSnap():{} {

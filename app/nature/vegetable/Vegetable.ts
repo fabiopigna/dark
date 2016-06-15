@@ -41,4 +41,8 @@ export abstract class Vegetable implements IVegetable {
     getLife():Life {
         return this.life;
     }
+
+    harvest():number {
+        return this.life.die();
+    }
 }

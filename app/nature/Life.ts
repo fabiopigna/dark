@@ -9,11 +9,13 @@ export class Life {
     private lifeNormalized:number;
     private lifeTime:number;
     private timeToDie:number;
+    private death:boolean;
 
     constructor(timeToGrow:number, percent:Percent, timeToDie:number = timeToGrow) {
         this.timeToDie = timeToDie;
         this.lifeGrowTime = new RandomPercent(timeToGrow, percent).getRandom();
         this.lifeNormalized = 0;
+        this.death = false;
     }
 
     update(elapsed:number) {
@@ -34,6 +36,12 @@ export class Life {
     }
 
     isDead():boolean {
-        return this.lifeTime > this.timeToDie;
+        return this.death || this.lifeTime > this.timeToDie;
+    }
+
+    die():number {
+        var value = this.lifeNormalized;
+        this.death = true;
+        return value;
     }
 }

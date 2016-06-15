@@ -14,5 +14,7 @@ export class HumanC {
 
     static PAINT_CONFIG:HumanPaintConfig = new HumanPaintConfig()
         .setPaintConstructor(HumanPainter);
+    static WIDTH:number = 8;
+    static HEIGHT:number = 20 ;
 
 }

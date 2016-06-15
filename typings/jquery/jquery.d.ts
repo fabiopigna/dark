@@ -1431,12 +1431,12 @@ interface JQuery {
     innerHeight(height: number|string): JQuery;
     
     /**
-     * Get the current computed width for the first element in the set of matched elements, including padding but not border.
+     * Get the current computed WIDTH for the first element in the set of matched elements, including padding but not border.
      */
     innerWidth(): number;
 
     /**
-     * Sets the inner width on elements in the set of matched elements, including padding but not border.
+     * Sets the inner WIDTH on elements in the set of matched elements, including padding but not border.
      *
      * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
      */
@@ -1474,14 +1474,14 @@ interface JQuery {
     outerHeight(height: number|string): JQuery;
 
     /**
-     * Get the current computed width for the first element in the set of matched elements, including padding and border.
+     * Get the current computed WIDTH for the first element in the set of matched elements, including padding and border.
      *
      * @param includeMargin A Boolean indicating whether to include the element's margin in the calculation.
      */
     outerWidth(includeMargin?: boolean): number;
 
     /**
-     * Sets the outer width on elements in the set of matched elements, including padding and border.
+     * Sets the outer WIDTH on elements in the set of matched elements, including padding and border.
      *
      * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
      */
@@ -1515,19 +1515,19 @@ interface JQuery {
     scrollTop(value: number): JQuery;
 
     /**
-     * Get the current computed width for the first element in the set of matched elements.
+     * Get the current computed WIDTH for the first element in the set of matched elements.
      */
     width(): number;
     /**
-     * Set the CSS width of each element in the set of matched elements.
+     * Set the CSS WIDTH of each element in the set of matched elements.
      *
      * @param value An integer representing the number of pixels, or an integer along with an optional unit of measure appended (as a string).
      */
     width(value: number|string): JQuery;
     /**
-     * Set the CSS width of each element in the set of matched elements.
+     * Set the CSS WIDTH of each element in the set of matched elements.
      *
-     * @param func A function returning the width to set. Receives the index position of the element in the set and the old width as arguments. Within the function, this refers to the current element in the set.
+     * @param func A function returning the WIDTH to set. Receives the index position of the element in the set and the old WIDTH as arguments. Within the function, this refers to the current element in the set.
      */
     width(func: (index: number, width: number) => number|string): JQuery;
 
