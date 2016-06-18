@@ -12,7 +12,7 @@ export class WorkOnFieldJob implements Job {
     private field:Field;
     private human:Human;
     private vegetables:IVegetable[];
-    private VELOCITY:number = 1 / 100;
+    private VELOCITY:number = 1 / 500;
     private currentIndex:number;
     private harvest:number;
 

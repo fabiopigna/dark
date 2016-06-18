@@ -3,6 +3,7 @@ import {Point} from "../../../geometry/Point";
 import {PolygonBounds} from "../../../geometry/PolygonBounds";
 import {FieldLayer} from "../field/FieldLayer";
 import {Vegetable} from "../Vegetable";
+import {IUpdatable} from "../../interface/IUpdatable";
 
 /**
  * Created by fabiopigna on 02/06/2016.
@@ -23,9 +24,7 @@ export class Tree extends Vegetable {
     }
 
     update(elapsed:number) {
-        super.update(elapsed);
-        if (this.getLife().isGrowing()) {
-            this.getLife().update(elapsed);
+        if (this.getLife().grow(elapsed, this.isRaining())) {
             this.left.x = this.getRoot().x - this.getLife().normalized() * 0.5 * TreeC.WIDTH;
             this.top.y = this.getRoot().y - this.getLife().normalized() * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH;
             this.right.x = this.getRoot().x + this.getLife().normalized() * 0.5 * TreeC.WIDTH;
@@ -34,6 +33,10 @@ export class Tree extends Vegetable {
 
     getBounds():PolygonBounds {
         return this.bounds;
+    }
+
+    isRaining():boolean {
+        return this.getFieldLayer().isRaining();
     }
 
 }

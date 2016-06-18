@@ -11,6 +11,7 @@ import {ICloudListener} from "./listeners/ICloudListener";
 import {ILiveable} from "./interface/ILiveable";
 import {ICollidable} from "./interface/ICollidable";
 import {Percent} from "../util/Percent";
+import {LineBounds} from "../geometry/LineBounds";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
@@ -63,6 +64,7 @@ export class Cloud implements IUpdatable,ICollidable,ILiveable {
 
     stopCollide() {
         this.rain.setRaining(false);
+        this.raining = false;
         this.listeners.forEach((listener:ICloudListener)=> {
             listener.stopRain();
         })
@@ -76,7 +78,6 @@ export class Cloud implements IUpdatable,ICollidable,ILiveable {
         return this.bounds.toSAT();
     }
 
-
     addListener(listener:ICloudListener) {
         this.listeners.push(listener);
     }
@@ -87,5 +88,13 @@ export class Cloud implements IUpdatable,ICollidable,ILiveable {
 
     removeListener(listener:ICloudListener) {
         this.listeners.remove(listener);
+    }
+
+    isRaining():boolean {
+        return this.raining
+    }
+
+    isOver(bounds:LineBounds):boolean {
+        return this.bounds.isOver(bounds);
     }
 }

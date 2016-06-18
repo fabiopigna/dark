@@ -19,9 +19,8 @@ export class GrainC {
         .setFieldWidth(100);
 
     static VEGETABLE_CONFIG:VegetableConfig = new VegetableConfig()
-        .setTimeToGrowBase(10000)
-        .setTimeToGrowPercent(new Percent(0.0))
-        .setTimeToDie(Infinity);
+        .setTimeToGrowBase(5000)
+        .setTimeToGrowPercent(new Percent(0.0));
 
     static PAINT_CONFIG:VegetablePaintConfig = new VegetablePaintConfig()
         .setPaintConstructor(GrainPainter);

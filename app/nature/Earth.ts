@@ -8,6 +8,7 @@ import {GrainC} from "./vegetable/grain/GrainC";
 import {TreeC} from "./vegetable/tree/TreeC";
 import {Human} from "./mankind/Human";
 import {HumanC} from "./mankind/HumanC";
+import {Fireplace} from "./buildings/fireplace/Fireplace";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
@@ -20,19 +21,26 @@ export class Earth implements IUpdatable {
     private strawberryField:Field[] = [];
     private grainFields:Field[] = [];
     private humans:Human[];
+    private fireplaces:Fireplace[];
 
 
     constructor(worldSize:Size, weather:Weather) {
         this.bounds = new RectangleBounds(new Point(0, worldSize.height - 20), new Size(worldSize.width, 20));
 
         this.treeFields = [];
-        this.treeFields.push(new Field(this, TreeC.FIELD_CONFIG));
+        this.treeFields.push(new Field(this, weather, TreeC.FIELD_CONFIG));
 
         this.grainFields = [];
-        this.grainFields.push(new Field(this, GrainC.FIELD_CONFIG));
-        this.grainFields.push(new Field(this, GrainC.FIELD_CONFIG));
-        
+        this.grainFields.push(new Field(this, weather, GrainC.FIELD_CONFIG));
+        this.grainFields.push(new Field(this, weather, GrainC.FIELD_CONFIG));
+
         this.humans = [new Human(this, HumanC.LIFE_CONFIG)];
+
+        this.fireplaces = [new Fireplace(this)];
+    }
+
+    getFireplaces():Fireplace[] {
+        return this.fireplaces;
     }
 
 
@@ -52,7 +60,7 @@ export class Earth implements IUpdatable {
         return this.treeFields;
     }
 
-    getHumans():Human[]{
+    getHumans():Human[] {
         return this.humans;
     }
 

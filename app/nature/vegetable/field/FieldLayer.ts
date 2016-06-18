@@ -21,15 +21,17 @@ export class FieldLayer implements IUpdatable {
     private config:FieldConfig;
     private listeners:IFieldLayerListener[];
     private level:number;
+    private field:Field;
 
     constructor(field:Field, level:number, config:FieldConfig) {
+        this.field = field;
         this.level = level;
         this.config = config;
         this.vegetables = [];
         this.listeners = [];
         this.clock = new RandomTimer(config.minTimeToBorn, config.rangeTimeToBorn);
         this.death = new Death<IVegetable>();
-        this.bounds = field.getBounds().translate(new Delta(level*5, level * 5));
+        this.bounds = field.getBounds().translate(new Delta(level * 5, level * 5));
     }
 
 
@@ -58,6 +60,10 @@ export class FieldLayer implements IUpdatable {
 
     removeListener(listener:IFieldLayerListener) {
         this.listeners.remove(listener);
+    }
+
+    isRaining():boolean {
+        return this.field.isRaining();
     }
 
     getBounds():LineBounds {

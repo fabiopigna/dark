@@ -6,6 +6,7 @@ import {RectangleBounds} from "../geometry/RectangleBounds";
 import {CloudC} from "./constants/NatureConstants";
 import {Collider} from "../util/Collider";
 import {Death} from "./Death";
+import {LineBounds} from "../geometry/LineBounds";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
@@ -58,6 +59,12 @@ export class Weather {
 
     addListener(listener:IWeatherListener) {
         this.listeners.push(listener);
+    }
+
+    isRaining(bounds:LineBounds):boolean {
+        return this.clouds
+            .filter((cloud:Cloud)=>cloud.isRaining())
+            .some((cloud:Cloud)=>cloud.isOver(bounds));
     }
 
 }

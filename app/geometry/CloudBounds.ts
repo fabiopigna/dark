@@ -56,4 +56,12 @@ export class CloudBounds extends PolygonBounds {
         return this.boundsSAT;
 
     }
+
+    isOver(bounds:LineBounds) {
+        let first = bounds.firstPoint;
+        let second = bounds.secondPoint;
+        let firstInside = first.x > this.bottomLine.firstPoint.x + this.origin.x && first.x < this.bottomLine.secondPoint.x + this.origin.x;
+        let secondInside = second.x > this.bottomLine.firstPoint.x + this.origin.x && second.x < this.bottomLine.secondPoint.x + this.origin.x;
+        return firstInside || secondInside;
+    }
 }

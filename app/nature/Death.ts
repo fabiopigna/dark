@@ -4,13 +4,9 @@ import {ILiveable} from "./interface/ILiveable";
  */
 export class Death<S extends ILiveable> {
 
-    doYourJob(souls:S[]):S[] {
-        var dead = souls.filter((soul:S)=> {
-            return soul.getLife().isDead();
-        });
-        dead.forEach((cloud:S)=> {
-            souls.remove(cloud);
-        });
+    doYourJob(elements:S[]):S[] {
+        var dead = elements.filter((element:S)=> element.getLife().isDead());
+        dead.forEach((element:S)=> elements.remove(element));
         return dead;
     }
 }

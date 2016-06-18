@@ -5,7 +5,6 @@ import {Percent} from "../../util/Percent";
 export class VegetableConfig {
     timeToGrowBase:number;
     timeToGrowPercent:Percent;
-    timeToDie:number;
 
     setTimeToGrowBase(timeToGrowBase:number):VegetableConfig {
         this.timeToGrowBase = timeToGrowBase;
@@ -17,9 +16,5 @@ export class VegetableConfig {
         return this;
     }
 
-    setTimeToDie(timeToDie:number):VegetableConfig {
-        this.timeToDie = timeToDie;
-        return this;
-    }
 
 }

@@ -17,11 +17,10 @@ export class FieldPainter implements IPainter {
 
     private fieldLayerPainters:FieldLayerPainter[];
     private snapGroup:Snap.Paper;
-    private ctor:IVegetablePainterConstructor;
 
     constructor(snap:Paper, field:Field, config:VegetablePaintConfig) {
         this.snapGroup = snap.g().addClass('field_g');
-        this.fieldLayerPainters = field.getLayers().map((layer:FieldLayer)=> new FieldLayerPainter(snap, layer, config));
+        this.fieldLayerPainters = field.getLayers().map((layer:FieldLayer)=> new FieldLayerPainter(this.snapGroup, layer, config));
     }
 
     repaint(elapsed:number) {

@@ -19,7 +19,9 @@ export class TreePainter implements IVegetablePainter {
     }
 
     repaint(elapsed:number) {
-        this.path.node.setAttribute('d', this.tree.getBounds().toSnapString());
+        if (this.tree.getLife().isChanged()) {
+            this.path.node.setAttribute('d', this.tree.getBounds().toSnapString());
+        }
     }
 
     destroy():void {

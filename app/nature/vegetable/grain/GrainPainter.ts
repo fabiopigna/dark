@@ -6,15 +6,19 @@ import {Color} from "../../../util/Color";
 /**
  * Created by fabiopigna on 08/06/2016.
  */
-    
+
 export class GrainPainter implements IVegetablePainter {
     private grain:Grain;
     private snapGrain:Snap.Element;
 
     constructor(snap:Snap.Paper, grain:Grain) {
         this.grain = grain;
-        this.snapGrain = snap.path().attr({stroke:new Color(0.7, 0.1).byLevel(grain.getLevel())});
-     }
+        this.snapGrain = snap.path().attr({stroke: this.getColor()});
+    }
+
+    private getColor():string {
+        return new Color(0.7, 0.1).byLevel(this.grain.getLevel()).toString();
+    }
 
     getVegetable():IVegetable {
         return this.grain;
