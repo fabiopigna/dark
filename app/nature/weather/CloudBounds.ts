@@ -1,12 +1,12 @@
-import {Point} from "./Point";
-import {LineBounds} from "./LineBounds";
-import {RectangleBounds} from "./RectangleBounds";
-import {Size} from "./Size";
-import {RandomOption} from "../util/RandomOption";
-import {PolygonBounds} from "./PolygonBounds";
+import {Point} from "../../geometry/Point";
+import {LineBounds} from "../../geometry/LineBounds";
+import {RectangleBounds} from "../../geometry/RectangleBounds";
+import {Size} from "../../geometry/Size";
+import {RandomOption} from "../../util/RandomOption";
+import {PolygonBounds} from "../../geometry/PolygonBounds";
 import Polygon = SAT.Polygon;
 import Vector = SAT.Vector;
-import {Delta} from "./Delta";
+import {Delta} from "../../geometry/Delta";
 /**
  * Created by fabiopigna on 04/06/2016.
  */

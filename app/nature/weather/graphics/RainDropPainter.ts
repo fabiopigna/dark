@@ -1,9 +1,9 @@
-import {IPainter} from "../nature/interface/IPainter";
-import {LineBounds} from "../geometry/LineBounds";
-import {WeatherC} from "../nature/constants/NatureConstants";
-import {RandomPercent} from "../util/RandomPercent";
-import {ICloudListener} from "../nature/listeners/ICloudListener";
-import {Percent} from "../util/Percent";
+import {IPainter} from "../../interface/IPainter";
+import {LineBounds} from "../../../geometry/LineBounds";
+import {WeatherC} from "../../constants/NatureConstants";
+import {RandomPercent} from "../../../util/RandomPercent";
+import {ICloudListener} from "../ICloudListener";
+import {Percent} from "../../../util/Percent";
 /**
  * Created by fabiopigna on 05/06/2016.
  */

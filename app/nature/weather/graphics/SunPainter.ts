@@ -1,5 +1,5 @@
-import {IPainter} from "../nature/interface/IPainter";
-import {Sun} from "../nature/Sun";
+import {IPainter} from "../../interface/IPainter";
+import {Sun} from "../Sun";
 import Paper = Snap.Paper;
 /**
  * Created by fabiopigna on 02/06/2016.

@@ -1,11 +1,11 @@
 import {Point} from "../geometry/Point";
 import {Size} from "../geometry/Size";
 import {IUpdatable} from "./interface/IUpdatable";
-import {Sun} from "./Sun";
+import {Sun} from "./weather/Sun";
 import {Earth} from "./Earth";
 import {Landscape} from "./Landscape";
 import {RectangleBounds} from "../geometry/RectangleBounds";
-import {Weather} from "./Weather";
+import {Weather} from "./weather/Weather";
 export class World implements IUpdatable {
 
     private width:number;

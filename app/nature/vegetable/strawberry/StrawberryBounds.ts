@@ -1,8 +1,8 @@
-import {CurveBounds} from "./CurveBounds";
-import {Point} from "./Point";
-import {StrawberryC}  from "../nature/constants/NatureConstants";
-import {RectangleBounds} from "./RectangleBounds";
-import {Size} from "./Size";
+import {CurveBounds} from "../../../geometry/CurveBounds";
+import {Point} from "../../../geometry/Point";
+import {StrawberryC}  from "../../constants/NatureConstants";
+import {RectangleBounds} from "../../../geometry/RectangleBounds";
+import {Size} from "../../../geometry/Size";
 /**
  * Created by fabiopigna on 06/06/2016.
  */

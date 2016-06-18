@@ -1,9 +1,9 @@
-import {IUpdatable} from "./interface/IUpdatable";
-import {Size} from "../geometry/Size";
-import {CircleBounds} from "../geometry/CircleBounds";
-import {Point} from "../geometry/Point";
-import {ISnapBounds} from "./interface/ISnapBounds";
-import {RangedValue} from "../geometry/RangedValue";
+import {IUpdatable} from "../interface/IUpdatable";
+import {Size} from "../../geometry/Size";
+import {CircleBounds} from "../../geometry/CircleBounds";
+import {Point} from "../../geometry/Point";
+import {ISnapBounds} from "../interface/ISnapBounds";
+import {RangedValue} from "../../geometry/RangedValue";
 /**
  * Created by fabiopigna on 02/06/2016.
  */

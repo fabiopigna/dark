@@ -2,7 +2,7 @@ import {IUpdatable} from "./interface/IUpdatable";
 import {RectangleBounds} from "../geometry/RectangleBounds";
 import {Point} from "../geometry/Point";
 import {Size} from "../geometry/Size";
-import {Weather} from "./Weather";
+import {Weather} from "./weather/Weather";
 import {Field} from "./vegetable/field/Field";
 import {GrainC} from "./vegetable/grain/GrainC";
 import {TreeC} from "./vegetable/tree/TreeC";

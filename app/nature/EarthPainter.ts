@@ -1,16 +1,16 @@
-import {IPainter} from "../nature/interface/IPainter";
-import {Earth} from "../nature/Earth";
+import {IPainter} from "./interface/IPainter";
+import {Earth} from "./Earth";
 import Paper = Snap.Paper;
-import {FieldPainter} from "../nature/vegetable/field/FieldPainter";
-import {Field} from "../nature/vegetable/field/Field";
-import {TreeC} from "../nature/vegetable/tree/TreeC";
-import {StrawberryC} from "../nature/constants/NatureConstants";
-import {GrainC} from "../nature/vegetable/grain/GrainC";
-import {Human} from "../nature/mankind/Human";
-import {HumanC} from "../nature/mankind/HumanC";
-import {HumanPainter} from "../nature/mankind/HumanPainter";
-import {FireplacePainter} from "../nature/buildings/fireplace/FireplacePainter";
-import {Fireplace} from "../nature/buildings/fireplace/Fireplace";
+import {FieldPainter} from "./vegetable/field/FieldPainter";
+import {Field} from "./vegetable/field/Field";
+import {TreeC} from "./vegetable/tree/TreeC";
+import {StrawberryC} from "./constants/NatureConstants";
+import {GrainC} from "./vegetable/grain/GrainC";
+import {Human} from "./mankind/Human";
+import {HumanC} from "./mankind/HumanC";
+import {HumanPainter} from "./mankind/HumanPainter";
+import {FireplacePainter} from "./buildings/fireplace/FireplacePainter";
+import {Fireplace} from "./buildings/fireplace/Fireplace";
 /**
  * Created by fabiopigna on 02/06/2016.
  */

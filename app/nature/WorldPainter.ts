@@ -1,10 +1,10 @@
 import Paper = Snap.Paper;
-import {World} from "../nature/World";
-import {IPainter} from "../nature/interface/IPainter";
-import {SunPainter} from "./SunPainter";
+import {World} from "./World";
+import {IPainter} from "./interface/IPainter";
+import {SunPainter} from "./weather/graphics/SunPainter";
 import {EarthPainter} from "./EarthPainter";
 import {LandscapePainter} from "./LandscapePainter";
-import {WeatherPainter} from "./WeatherPainter";
+import {WeatherPainter} from "./weather/graphics/WeatherPainter";
 /**
  * Created by fabiopigna on 02/06/2016.
  */

@@ -4,7 +4,7 @@ import {IUpdatable} from "../../interface/IUpdatable";
 import {Earth} from "../../Earth";
 import {FieldConfig} from "./FieldConfig";
 import {IndexArray} from "../../../util/IndexArray";
-import {Weather} from "../../Weather";
+import {Weather} from "../../weather/Weather";
 /**
  * Created by fabiopigna on 11/06/2016.
  */

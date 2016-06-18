@@ -1,9 +1,9 @@
 import {CloudPainter} from "./CloudPainter";
-import {Weather} from "../nature/Weather";
+import {Weather} from "../Weather";
 import Paper = Snap.Paper;
-import {Cloud} from "../nature/Cloud";
-import {IWeatherListener} from "../nature/listeners/IWeatherListener";
-import {IPainter} from "../nature/interface/IPainter";
+import {Cloud} from "../Cloud";
+import {IWeatherListener} from "../IWeatherListener";
+import {IPainter} from "../../interface/IPainter";
 /**
  * Created by fabiopigna on 03/06/2016.
  */

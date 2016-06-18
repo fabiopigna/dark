@@ -1,10 +1,10 @@
-import {Percent} from "../util/Percent";
-import {RandomPercent} from "../util/RandomPercent";
-import {RainStatus} from "./vegetable/life/RainingStatus";
+import {Percent} from "../../util/Percent";
+import {RandomPercent} from "../../util/RandomPercent";
+import {RainStatus} from "./life/RainingStatus";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
-export class GrowLife {
+export class VegetableLife {
     private lifeNormalized:number;
     private death:boolean;
     private changed:boolean;

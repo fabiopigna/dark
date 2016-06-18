@@ -1,8 +1,8 @@
-import {IPainter} from "../nature/interface/IPainter";
-import {Rain} from "../nature/Rain";
-import {LineBounds} from "../geometry/LineBounds";
+import {IPainter} from "../../interface/IPainter";
+import {Rain} from "../Rain";
+import {LineBounds} from "../../../geometry/LineBounds";
 import {RainDropPainter} from "./RainDropPainter";
-import {ICloudListener} from "../nature/listeners/ICloudListener";
+import {ICloudListener} from "../ICloudListener";
 /**
  * Created by fabiopigna on 04/06/2016.
  */

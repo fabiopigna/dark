@@ -1,5 +1,5 @@
-import {IPainter} from "../nature/interface/IPainter";
-import {Landscape} from "../nature/Landscape";
+import {IPainter} from "./interface/IPainter";
+import {Landscape} from "./Landscape";
 /**
  * Created by fabiopigna on 02/06/2016.
  */

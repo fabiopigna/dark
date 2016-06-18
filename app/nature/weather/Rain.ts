@@ -1,8 +1,8 @@
 import {Cloud} from "./Cloud";
-import {LineBounds} from "../geometry/LineBounds";
+import {LineBounds} from "../../geometry/LineBounds";
 import {Weather} from "./Weather";
-import {IUpdatable} from "./interface/IUpdatable";
-import {Point} from "../geometry/Point";
+import {IUpdatable} from "../interface/IUpdatable";
+import {Point} from "../../geometry/Point";
 /**
  * Created by fabiopigna on 04/06/2016.
  */

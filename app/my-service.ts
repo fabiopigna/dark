@@ -1,5 +1,5 @@
 import {World} from "./nature/World";
-import {WorldPainter} from "./painters/WorldPainter";
+import {WorldPainter} from "./nature/WorldPainter";
 
 
 export class MyService {

@@ -3,14 +3,14 @@ import {FieldLayer} from "./field/FieldLayer";
 import {Life} from "../Life";
 import {Point} from "../../geometry/Point";
 import {VegetableConfig} from "./VegetableConfig";
-import {GrowLife} from "../GrowLife";
+import {VegetableLife} from "./VegetableLife";
 /**
  * Created by fabiopigna on 08/06/2016.
  */
 export abstract class Vegetable implements IVegetable {
 
     private fieldLayer:FieldLayer;
-    private life:GrowLife;
+    private life:VegetableLife;
     private root:Point;
     private level:number;
 
@@ -18,7 +18,7 @@ export abstract class Vegetable implements IVegetable {
         this.fieldLayer = fieldLayer;
         this.level = level;
         this.root = fieldLayer.getBounds().getRandomPoint();
-        this.life = new GrowLife(config.timeToGrowBase, config.timeToGrowPercent);
+        this.life = new VegetableLife(config.timeToGrowBase, config.timeToGrowPercent);
     }
 
     getRoot():Point {
@@ -33,7 +33,7 @@ export abstract class Vegetable implements IVegetable {
         return this.fieldLayer;
     }
 
-    getLife():GrowLife {
+    getLife():VegetableLife {
         return this.life;
     }
 

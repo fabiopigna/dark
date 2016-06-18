@@ -3,7 +3,7 @@ import {FieldLayer} from "../field/FieldLayer";
 import {Life} from "../../Life";
 import {RandomOption} from "../../../util/RandomOption";
 import {Point} from "../../../geometry/Point";
-import {StrawberryBounds} from "../../../geometry/StrawberryBounds";
+import {StrawberryBounds} from "./StrawberryBounds";
 import {StrawberryC} from "../../constants/NatureConstants";
 import {Percent} from "../../../util/Percent";
 /**

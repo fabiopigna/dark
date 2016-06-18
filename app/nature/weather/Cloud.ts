@@ -1,17 +1,17 @@
-import {IUpdatable} from "./interface/IUpdatable";
+import {IUpdatable} from "../interface/IUpdatable";
 import {Weather} from "./Weather";
-import {Point} from "../geometry/Point";
-import {Life} from "./Life";
-import {RangedValue} from "../geometry/RangedValue";
-import {CloudC} from "./constants/NatureConstants";
-import {CloudBounds} from "../geometry/CloudBounds";
-import {RandomOption} from "../util/RandomOption";
+import {Point} from "../../geometry/Point";
+import {Life} from "../Life";
+import {RangedValue} from "../../geometry/RangedValue";
+import {CloudC} from "../constants/NatureConstants";
+import {CloudBounds} from "./CloudBounds";
+import {RandomOption} from "../../util/RandomOption";
 import {Rain} from "./Rain";
-import {ICloudListener} from "./listeners/ICloudListener";
-import {ILiveable} from "./interface/ILiveable";
-import {ICollidable} from "./interface/ICollidable";
-import {Percent} from "../util/Percent";
-import {LineBounds} from "../geometry/LineBounds";
+import {ICloudListener} from "./ICloudListener";
+import {ILiveable} from "../interface/ILiveable";
+import {ICollidable} from "../interface/ICollidable";
+import {Percent} from "../../util/Percent";
+import {LineBounds} from "../../geometry/LineBounds";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
