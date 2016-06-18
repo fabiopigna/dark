@@ -71,6 +71,6 @@ export class FieldLayer implements IUpdatable {
     }
 
     canFarm():boolean {
-        return this.vegetables.every((vegetable:IVegetable)=>vegetable.canFarm());
+        return this.vegetables.some((vegetable:IVegetable)=>vegetable.canFarm());
     }
 }

@@ -42,4 +42,11 @@ export class MoveAStepJob implements IJob {
         }
     }
 
+
+    applyResults(results:number):void {
+    }
+
+    getResults():number {
+        return 0;
+    }
 }

@@ -18,8 +18,8 @@ export class VegetableLife implements ILife{
         this.timeToGrow = new RandomPercent(timeToGrowBase, timeToGrowPercent).getRandom();
         this.velocity = 1.0 / this.timeToGrow;
         this.status = new RainStatus();
-        this.changed = false;
-        this.lifeNormalized = 0;
+        this.changed = true;
+        this.lifeNormalized = Math.random();
     }
 
     grow(elapsed:number, raining:boolean) {

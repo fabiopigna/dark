@@ -11,24 +11,24 @@ import {IUpdatable} from "../../interface/IUpdatable";
 export class Tree extends Vegetable {
 
     private bounds:PolygonBounds;
-    private left:Point;
-    private top:Point;
-    private right:Point;
 
     constructor(fieldLayer:FieldLayer, level:number) {
         super(fieldLayer, level, TreeC.VEGETABLE_CONFIG);
-        this.left = new Point(this.getRoot().x - this.getLife().normalized() * 0.5 * TreeC.WIDTH, this.getRoot().y - TreeC.DISTANCE_FROM_EARTH);
-        this.top = new Point(this.getRoot().x, this.getRoot().y - this.getLife().normalized() * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH);
-        this.right = new Point(this.getRoot().x + this.getLife().normalized() * 0.5 * TreeC.WIDTH, this.getRoot().y - TreeC.DISTANCE_FROM_EARTH);
-        this.bounds = new PolygonBounds([this.left, this.top, this.right])
+        var normalized = this.getLife().normalized();
+        let left = new Point(-normalized * 0.5 * TreeC.WIDTH, -TreeC.DISTANCE_FROM_EARTH);
+        let top = new Point(0, -normalized * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH);
+        let right = new Point(+normalized * 0.5 * TreeC.WIDTH, -TreeC.DISTANCE_FROM_EARTH);
+        this.bounds = new PolygonBounds(this.getRoot(), [left, top, right])
     }
 
     update(elapsed:number) {
         this.getLife().grow(elapsed, this.isRaining());
         if (this.getLife().isChanged()) {
-            this.left.x = this.getRoot().x - this.getLife().normalized() * 0.5 * TreeC.WIDTH;
-            this.top.y = this.getRoot().y - this.getLife().normalized() * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH;
-            this.right.x = this.getRoot().x + this.getLife().normalized() * 0.5 * TreeC.WIDTH;
+            var normalized = this.getLife().normalized();
+            let [left, top, right] = this.bounds.getPoints();
+            left.x = -normalized * 0.5 * TreeC.WIDTH;
+            top.y = -normalized * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH;
+            right.x = +normalized * 0.5 * TreeC.WIDTH;
         }
     }
 

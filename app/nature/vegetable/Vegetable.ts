@@ -4,6 +4,7 @@ import {Life} from "../Life";
 import {Point} from "../../geometry/Point";
 import {VegetableConfig} from "./VegetableConfig";
 import {VegetableLife} from "./VegetableLife";
+import {IBounds} from "../../geometry/IBounds";
 /**
  * Created by fabiopigna on 08/06/2016.
  */
@@ -47,4 +48,6 @@ export abstract class Vegetable implements IVegetable {
     }
 
     abstract update(elapsed:number):void;
+
+    abstract getBounds():IBounds;
 }

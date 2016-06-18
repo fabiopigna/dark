@@ -29,6 +29,10 @@ export class ConsumerLife implements ILife {
 
     }
 
+    addToConsume(toConsume:number) {
+        this.toConsume += toConsume;
+    }
+
     needToConsume():boolean {
         return this.toConsume < this.fullValue;
     }

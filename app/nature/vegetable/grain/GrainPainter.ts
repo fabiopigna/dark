@@ -10,10 +10,14 @@ import {Color} from "../../../util/Color";
 export class GrainPainter implements IVegetablePainter {
     private grain:Grain;
     private snapGrain:Snap.Element;
+    private snapGroup:Snap.Paper;
 
     constructor(snap:Snap.Paper, grain:Grain) {
         this.grain = grain;
-        this.snapGrain = snap.path().attr({stroke: this.getColor()});
+        this.snapGroup = snap.g();
+        this.snapGrain = this.snapGroup.path().attr({stroke: this.getColor()});
+        this.snapGroup.node.setAttribute('transform', 'translate(' + grain.getBounds().getOrigin().x + ' ' + grain.getBounds().getOrigin().y + ')');
+
     }
 
     private getColor():string {

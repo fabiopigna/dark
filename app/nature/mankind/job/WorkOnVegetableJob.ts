@@ -9,7 +9,6 @@ import {IVegetable} from "../../vegetable/IVegetable";
 export class WorkOnVegetableJob implements IJob {
 
     private startTime:number;
-    private field:Field;
     private human:Human;
     private vegetable:IVegetable;
     private VELOCITY:number = 1 / 5000;
@@ -37,8 +36,11 @@ export class WorkOnVegetableJob implements IJob {
 
         }
     }
+    
+    applyResults(results:number):void {
+    }
 
-    getHarvest():number {
+    getResults():number {
         return this.harvest;
     }
 }

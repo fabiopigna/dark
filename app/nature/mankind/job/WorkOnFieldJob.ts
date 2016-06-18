@@ -39,4 +39,11 @@ export class WorkOnFieldJob implements IJob {
         this.currentIndex += delta;
 
     }
+    
+    applyResults(results:number):void {
+    }
+
+    getResults():number {
+        return 0;
+    }
 }

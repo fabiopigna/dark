@@ -6,6 +6,7 @@ import {FieldConfig} from "./FieldConfig";
 import {IndexArray} from "../../../util/IndexArray";
 import {Weather} from "../../weather/Weather";
 import {Point} from "../../../geometry/Point";
+import {IVegetable} from "../IVegetable";
 /**
  * Created by fabiopigna on 11/06/2016.
  */
@@ -43,5 +44,11 @@ export class Field implements IUpdatable {
 
     getCenter():Point {
         return this.bounds.getCenter()
+    }
+
+    getRandomVegetableReadyToFarm():IVegetable {
+        return this.fieldLayers.reduce((all:IVegetable[], fieldLayer:FieldLayer)=>fieldLayer.getVegetables(), [])
+            .filter((vegetable:IVegetable)=>vegetable.canFarm())[0];
+
     }
 }

@@ -10,4 +10,13 @@ export class StartJob implements IJob {
 
     update(elapsed:number):void {
     }
+
+
+    applyResults(results:number):void {
+    }
+
+
+    getResults():number {
+        return 0;
+    }
 }

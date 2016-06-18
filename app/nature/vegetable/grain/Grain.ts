@@ -6,29 +6,32 @@ import {RandomPercent} from "../../../util/RandomPercent";
 import {GrainC} from "./GrainC";
 import {Delta} from "../../../geometry/Delta";
 import {IUpdatable} from "../../interface/IUpdatable";
+import {PolygonBounds} from "../../../geometry/PolygonBounds";
+import {Point} from "../../../geometry/Point";
 /**
  * Created by fabiopigna on 08/06/2016.
  */
 
 export class Grain extends Vegetable {
-    private bounds:LineBounds;
+    private bounds:PolygonBounds;
     private maxHeight:number;
 
 
     constructor(fieldLayer:FieldLayer, level:number) {
         super(fieldLayer, level, GrainC.VEGETABLE_CONFIG);
-        this.bounds = new LineBounds(super.getRoot(), super.getRoot().copy().moveBy(new Delta(0, -1)));
+        this.bounds = new PolygonBounds(this.getRoot(), [new Point(0, 0), new Point(0, -1)]);
         this.maxHeight = new RandomPercent(GrainC.MAX_HEIGHT, Percent.valueOf(0.1)).getRandomRound();
     }
 
-    getBounds():LineBounds {
+    getBounds():PolygonBounds {
         return this.bounds;
     }
 
     update(elapsed:number):void {
         this.getLife().grow(elapsed, this.isRaining());
         if (this.getLife().isChanged()) {
-            this.bounds.secondPoint.y = this.bounds.firstPoint.y - this.getLife().normalized() * this.maxHeight - 1;
+            let [first, last] = this.bounds.getPoints();
+            last.y = -this.getLife().normalized() * this.maxHeight - 1;
         }
     }
 

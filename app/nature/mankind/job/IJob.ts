@@ -7,4 +7,6 @@ export interface IJob {
     isCompleted():boolean;
 
     update(elapsed:number):void;
+    applyResults(results:number):void;
+    getResults():number;
 }

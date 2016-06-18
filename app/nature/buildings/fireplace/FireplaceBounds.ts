@@ -7,11 +7,9 @@ import {Percent} from "../../../util/Percent";
  */
 export class FireplaceBounds extends PolygonBounds {
 
-    private origin:Point;
 
     constructor(origin:Point) {
-        super(FireplaceBounds.trianglePoints(Percent.valueOf(1.0)));
-        this.origin = origin;
+        super(origin, FireplaceBounds.trianglePoints(Percent.valueOf(1.0)));
     }
 
     private static  trianglePoints(percent:Percent):Point[] {
@@ -26,11 +24,8 @@ export class FireplaceBounds extends PolygonBounds {
     }
 
     scaleCopy(percent:Percent):PolygonBounds {
-        return new PolygonBounds(FireplaceBounds.trianglePoints(percent));
+        return new PolygonBounds(this.getOrigin(), FireplaceBounds.trianglePoints(percent));
     }
 
-    getOrigin():Point {
-        return this.origin;
-    }
 }
 

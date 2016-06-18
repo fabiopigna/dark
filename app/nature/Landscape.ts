@@ -26,10 +26,11 @@ export class Landscape implements IUpdatable {
         var m2 = new Mountain(worldSize.height * 0.9, worldSize.width);
         var points2 = [p0].concat(m2.getPoints()).concat([p1]);
 
+        var origin = new Point(0,0);
         this.bounds = [];
-        this.bounds.push(new PolygonBounds(points0));
-        this.bounds.push(new PolygonBounds(points1));
-        this.bounds.push(new PolygonBounds(points2));
+        this.bounds.push(new PolygonBounds(origin,points0));
+        this.bounds.push(new PolygonBounds(origin,points1));
+        this.bounds.push(new PolygonBounds(origin,points2));
 
     }
 

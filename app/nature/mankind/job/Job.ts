@@ -18,11 +18,18 @@ export abstract class Job implements IJob {
         this.field = field;
         this.job = new StartJob();
     }
-    
+
     abstract getNewJob(elapsed:number):IJob;
+
+    abstract isCompleted():boolean;
+
+    abstract applyResults(results:number):void;
+
+    abstract getResults():number;
 
     update(elapsed:number):void {
         if (this.job.isCompleted()) {
+            this.applyResults(this.job.getResults());
             this.job = this.getNewJob(elapsed)
         }
         this.job.update(elapsed);

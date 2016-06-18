@@ -10,4 +10,12 @@ export class EndJob implements IJob {
 
     update(elapsed:number):void {
     }
+
+
+    applyResults(results:number):void {
+    }
+
+    getResults():number {
+        return 0;
+    }
 }

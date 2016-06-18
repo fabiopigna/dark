@@ -8,11 +8,12 @@ import Polygon = SAT.Polygon;
  * Created by fabiopigna on 02/06/2016.
  */
 export class PolygonBounds implements IBounds,ISnapBounds {
-    private points:Point[];
     private closed:boolean;
     private center:Point;
-    private origin:Point;
     private polygonSAT:SAT.Polygon;
+
+    protected points:Point[];
+    protected origin:Point;
 
 
     constructor(origin:Point, points:Point[], closed?:boolean) {
@@ -25,6 +26,10 @@ export class PolygonBounds implements IBounds,ISnapBounds {
 
     getPoints():Point[] {
         return this.points;
+    }
+
+    getOrigin():Point {
+        return this.origin;
     }
 
     setPoints(points:Point[]):void {

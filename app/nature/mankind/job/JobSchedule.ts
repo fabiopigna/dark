@@ -44,6 +44,8 @@ export class JobSchedule {
     }
 
     private needToTimber(human:Human) {
-        return this.earth.getFireplaces()[0].getLife().needToConsume();
+        var woodNeeded = this.earth.getFireplaces()[0].getLife().needToConsume();
+        var woodReady = this.earth.getTreeFields()[0].canFarm();
+        return woodNeeded && woodReady;
     }
 }

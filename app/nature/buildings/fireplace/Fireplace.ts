@@ -33,4 +33,5 @@ export class Fireplace implements IUpdatable {
     getLife():ConsumerLife {
         return this.life;
     }
+
 }

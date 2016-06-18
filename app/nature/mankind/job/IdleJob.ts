@@ -20,4 +20,11 @@ export class IdleJob implements IJob {
         this.completed = elapsed - this.startTime > IdleJob.MIN_DURATION;
     }
 
+
+    applyResults(results:number):void {
+    }
+
+    getResults():number {
+        return 0;
+    }
 }
