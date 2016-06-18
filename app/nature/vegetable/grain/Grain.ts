@@ -10,7 +10,7 @@ import {IUpdatable} from "../../interface/IUpdatable";
  * Created by fabiopigna on 08/06/2016.
  */
 
-export class Grain extends Vegetable  {
+export class Grain extends Vegetable {
     private bounds:LineBounds;
     private maxHeight:number;
 
@@ -26,7 +26,8 @@ export class Grain extends Vegetable  {
     }
 
     update(elapsed:number):void {
-        if (this.getLife().grow(elapsed, this.isRaining())) {
+        this.getLife().grow(elapsed, this.isRaining());
+        if (this.getLife().isChanged()) {
             this.bounds.secondPoint.y = this.bounds.firstPoint.y - this.getLife().normalized() * this.maxHeight - 1;
         }
     }

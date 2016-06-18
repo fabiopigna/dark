@@ -1,8 +1,8 @@
-import {Job} from "./Job";
+import {IJob} from "./IJob";
 /**
  * Created by fabiopigna on 12/06/2016.
  */
-export class IdleJob implements Job {
+export class IdleJob implements IJob {
 
     private completed:boolean;
     private startTime:number;

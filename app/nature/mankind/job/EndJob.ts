@@ -1,8 +1,8 @@
-import {Job} from "./Job";
+import {IJob} from "./IJob";
 /**
  * Created by fabiopigna on 12/06/2016.
  */
-export class EndJob implements Job {
+export class EndJob implements IJob {
 
     isCompleted():boolean {
         return true;

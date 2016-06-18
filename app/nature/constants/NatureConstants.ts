@@ -8,11 +8,7 @@ import {StrawberryPainter} from "../vegetable/strawberry/StrawberryPainter";
  * Created by fabiopigna on 03/06/2016.
  */
 
-export class CloudC {
-    static LIFE_TIME_TO_LOOP:number = 25000;
-    static MAX_HEIGHT:number = 20;
-    static MAX_WIDTH:number = 120;
-}
+
 export class WeatherC {
     static RAIN_LENGTH:number = 4;
     static RAIN_SPACER:number = 20;

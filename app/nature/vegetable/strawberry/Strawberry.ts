@@ -11,6 +11,9 @@ import {Percent} from "../../../util/Percent";
  */
 
 export class Strawberry implements IVegetable {
+    canFarm():boolean {
+        return undefined;
+    }
     private field:FieldLayer;
     private life:Life;
     private bounds:StrawberryBounds;
@@ -33,7 +36,7 @@ export class Strawberry implements IVegetable {
         return this.life;
     }
 
-    harvest():number {
+    farm():number {
         return 0;
     }
 

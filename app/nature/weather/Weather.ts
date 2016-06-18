@@ -3,10 +3,10 @@ import {RandomTimer} from "../../time/RandomTimer";
 import {Cloud} from "./Cloud";
 import {IWeatherListener} from "./IWeatherListener";
 import {RectangleBounds} from "../../geometry/RectangleBounds";
-import {CloudC} from "../constants/NatureConstants";
 import {Collider} from "../../util/Collider";
 import {Death} from "../Death";
 import {LineBounds} from "../../geometry/LineBounds";
+import {CloudC} from "./CloudC";
 /**
  * Created by fabiopigna on 03/06/2016.
  */

@@ -1,10 +1,11 @@
 import {Percent} from "../../util/Percent";
 import {RandomPercent} from "../../util/RandomPercent";
 import {RainStatus} from "./life/RainingStatus";
+import {ILife} from "../ILife";
 /**
  * Created by fabiopigna on 03/06/2016.
  */
-export class VegetableLife {
+export class VegetableLife implements ILife{
     private lifeNormalized:number;
     private death:boolean;
     private changed:boolean;
@@ -21,7 +22,7 @@ export class VegetableLife {
         this.lifeNormalized = 0;
     }
 
-    grow(elapsed:number, raining:boolean):boolean {
+    grow(elapsed:number, raining:boolean) {
         this.status.update(raining);
         if (this.status.isStartRaining()) {
             this.startRainingTime = elapsed;
@@ -37,10 +38,9 @@ export class VegetableLife {
         } else if (this.status.isStillNotRaining()) {
             this.changed = false;
         }
-       
-        return this.changed;
     }
 
+    
     isChanged():boolean {
         return this.changed
     }
@@ -58,6 +58,10 @@ export class VegetableLife {
         this.death = true;
         this.changed = true;
         return value;
+    }
+
+    isFullGrow() {
+        return this.lifeNormalized === 1.0;
     }
 }
 

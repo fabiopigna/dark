@@ -1,9 +1,11 @@
 import {Human} from "../Human";
-import {Job} from "./Job";
+import {IJob} from "./IJob";
 import {Earth} from "../../Earth";
-import {FarmJob} from "./FarmJob";
+import {FarmFieldJob} from "./FarmFieldJob";
 import {IdleJob} from "./IdleJob";
 import {StartJob} from "./StartJob";
+import {Field} from "../../vegetable/field/Field";
+import {TimberJob} from "./TimberJob";
 /**
  * Created by fabiopigna on 12/06/2016.
  */
@@ -18,16 +20,30 @@ export class JobSchedule {
 
     }
 
-    getNewJob(elapsed:number):Job {
+    getNewJob(elapsed:number):IJob {
         if (this.human.getLife().isGrowing()) {
             return new IdleJob(elapsed);
-        } else {
+        } else if (this.needToTimber(this.human)) {
+            return new TimberJob(this.human, this.earth.getFireplaces()[0], this.earth.getTreeFields()[0]);
+        } else if (this.needToFarm(this.human, this.earth.getGrainFields())) {
             let index = Math.floor(Math.random() * this.earth.getGrainFields().length);
-            return new FarmJob(this.human, this.earth.getGrainFields()[index], elapsed);
+            return new FarmFieldJob(this.human, this.earth.getGrainFields()[index]);
+        } else {
+            return new IdleJob(elapsed);
         }
     }
 
     getStartJob() {
         return new StartJob();
+    }
+
+    private needToFarm(human:Human, grainFields:Field[]):boolean {
+        return grainFields.some((grainField:Field)=>grainField.canFarm());
+
+
+    }
+
+    private needToTimber(human:Human) {
+        return this.earth.getFireplaces()[0].getLife().needToConsume();
     }
 }

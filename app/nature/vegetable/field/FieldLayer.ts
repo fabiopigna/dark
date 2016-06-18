@@ -69,4 +69,8 @@ export class FieldLayer implements IUpdatable {
     getBounds():LineBounds {
         return this.bounds;
     }
+
+    canFarm():boolean {
+        return this.vegetables.every((vegetable:IVegetable)=>vegetable.canFarm());
+    }
 }

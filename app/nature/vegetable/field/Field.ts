@@ -5,6 +5,7 @@ import {Earth} from "../../Earth";
 import {FieldConfig} from "./FieldConfig";
 import {IndexArray} from "../../../util/IndexArray";
 import {Weather} from "../../weather/Weather";
+import {Point} from "../../../geometry/Point";
 /**
  * Created by fabiopigna on 11/06/2016.
  */
@@ -15,12 +16,12 @@ export class Field implements IUpdatable {
 
     constructor(earth:Earth, weather:Weather, config:FieldConfig) {
         this.weather = weather;
-        this.bounds = new CenterLineBounds(earth.getBounds().getTopLine().getRandomPoint(), 0.5*config.fieldWidth);
+        this.bounds = new CenterLineBounds(earth.getBounds().getTopLine().getRandomPoint(), 0.5 * config.fieldWidth);
         this.fieldLayers = new IndexArray(config.numberOfLayers).map((level)=>new FieldLayer(this, level, config));
 
     }
 
-    isRaining():boolean{
+    isRaining():boolean {
         return this.weather.isRaining(this.bounds);
     }
 
@@ -35,5 +36,12 @@ export class Field implements IUpdatable {
     update(elapsed:number) {
         this.fieldLayers.forEach((updatable:IUpdatable)=>updatable.update(elapsed));
     }
-    
+
+    canFarm():boolean {
+        return this.fieldLayers.some((fieldLayer:FieldLayer)=>fieldLayer.canFarm());
+    }
+
+    getCenter():Point {
+        return this.bounds.getCenter()
+    }
 }

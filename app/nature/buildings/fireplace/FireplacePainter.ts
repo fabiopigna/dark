@@ -26,7 +26,11 @@ export class FireplacePainter implements IPainter {
 
 
     repaint(elapsed:number) {
-        this.snapFireplaces[0].node.setAttribute('d', this.fireplace.getBounds().scaleCopy(new Percent(1.0- 0.2 * Math.random())).toSnapString())
+        let normalized = this.fireplace.getLife().normalized();
+        let percent = new Percent(normalized - 0.2 * normalized * Math.random());
+        this.snapFireplaces[0].node.setAttribute('d', this.fireplace.getBounds().scaleCopy(percent).toSnapString());
+        this.snapFireplaces[1].node.setAttribute('d', this.fireplace.getBounds().scaleCopy(Percent.valueOf(this.sizes[1].get() * normalized)).toSnapString())
+        this.snapFireplaces[2].node.setAttribute('d', this.fireplace.getBounds().scaleCopy(Percent.valueOf(this.sizes[2].get() * normalized)).toSnapString())
     }
 
     destroy():void {

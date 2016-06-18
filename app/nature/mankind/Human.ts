@@ -4,7 +4,7 @@ import {HumanLifeConfig} from "./HumanLifeConfig";
 import {Life} from "../Life";
 import {HumanBounds} from "./HumanBounds";
 import {JobSchedule} from "./job/JobSchedule";
-import {Job} from "./job/Job";
+import {IJob} from "./job/IJob";
 /**
  * Created by fabiopigna on 11/06/2016.
  */
@@ -14,7 +14,7 @@ export class Human implements IUpdatable {
     private life:Life;
     private bounds:HumanBounds;
     private jobSchedule:JobSchedule;
-    private job:Job;
+    private job:IJob;
 
     constructor(earth:Earth, config:HumanLifeConfig) {
         this.earth = earth;

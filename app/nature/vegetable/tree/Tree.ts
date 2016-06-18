@@ -24,7 +24,8 @@ export class Tree extends Vegetable {
     }
 
     update(elapsed:number) {
-        if (this.getLife().grow(elapsed, this.isRaining())) {
+        this.getLife().grow(elapsed, this.isRaining());
+        if (this.getLife().isChanged()) {
             this.left.x = this.getRoot().x - this.getLife().normalized() * 0.5 * TreeC.WIDTH;
             this.top.y = this.getRoot().y - this.getLife().normalized() * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH;
             this.right.x = this.getRoot().x + this.getLife().normalized() * 0.5 * TreeC.WIDTH;

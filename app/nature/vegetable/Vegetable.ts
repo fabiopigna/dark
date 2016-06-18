@@ -37,10 +37,14 @@ export abstract class Vegetable implements IVegetable {
         return this.life;
     }
 
-    harvest():number {
+    farm():number {
         return this.life.die();
     }
 
+
+    canFarm():boolean {
+        return this.life.isFullGrow();
+    }
 
     abstract update(elapsed:number):void;
 }

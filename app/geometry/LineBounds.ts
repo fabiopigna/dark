@@ -6,11 +6,12 @@ import {Delta} from "./Delta";
 import Vector = SAT.Vector;
 import Polygon = SAT.Polygon;
 import {ICollidableBounds} from "../util/ICollidableBounds";
+import {IBounds} from "./IBounds";
 /**
  * Created by fabiopigna on 02/06/2016.
  */
 
-export class LineBounds implements ISnapBounds,ICollidableBounds {
+export class LineBounds implements ISnapBounds,IBounds {
     private _firstPoint:Point;
     private _secondPoint:Point;
     private originSAT:Vector;

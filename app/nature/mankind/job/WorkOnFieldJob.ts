@@ -1,4 +1,4 @@
-import {Job} from "./Job";
+import {IJob} from "./IJob";
 import {Field} from "../../vegetable/field/Field";
 import {Human} from "../Human";
 import {FieldLayer} from "../../vegetable/field/FieldLayer";
@@ -6,13 +6,13 @@ import {IVegetable} from "../../vegetable/IVegetable";
 /**
  * Created by fabiopigna on 14/06/2016.
  */
-export class WorkOnFieldJob implements Job {
+export class WorkOnFieldJob implements IJob {
 
     private startTime:number;
     private field:Field;
     private human:Human;
     private vegetables:IVegetable[];
-    private VELOCITY:number = 1 / 500;
+    private VELOCITY:number = 1 / 250;
     private currentIndex:number;
     private harvest:number;
 
@@ -34,7 +34,7 @@ export class WorkOnFieldJob implements Job {
         var time:number = Math.min(this.vegetables.length / this.VELOCITY, (elapsed - this.startTime));
         let delta = Math.floor(time * this.VELOCITY) - this.currentIndex;
         for (let i = 0; i <  delta; i++) {
-            this.harvest += this.vegetables[this.currentIndex + i].harvest();
+            this.harvest += this.vegetables[this.currentIndex + i].farm();
         }
         this.currentIndex += delta;
 

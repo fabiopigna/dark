@@ -3,4 +3,7 @@
  */
 export interface ILife {
     isDead():boolean;
+    isChanged():boolean;
+    die():number;
+    normalized():number;
 }

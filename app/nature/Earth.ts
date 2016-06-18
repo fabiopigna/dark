@@ -34,9 +34,9 @@ export class Earth implements IUpdatable {
         this.grainFields.push(new Field(this, weather, GrainC.FIELD_CONFIG));
         this.grainFields.push(new Field(this, weather, GrainC.FIELD_CONFIG));
 
-        this.humans = [new Human(this, HumanC.LIFE_CONFIG)];
-
         this.fireplaces = [new Fireplace(this)];
+
+        this.humans = [new Human(this, HumanC.LIFE_CONFIG)];
     }
 
     getFireplaces():Fireplace[] {
@@ -65,9 +65,10 @@ export class Earth implements IUpdatable {
     }
 
     update(elapsed:number) {
-        this.treeFields.forEach((field:Field)=>field.update(elapsed));
-        this.strawberryField.forEach((field:Field)=>field.update(elapsed));
-        this.grainFields.forEach((field:Field)=>field.update(elapsed));
-        this.humans.forEach((human:Human)=>human.update(elapsed));
+        this.treeFields.forEach((u:IUpdatable)=>u.update(elapsed));
+        this.strawberryField.forEach((u:IUpdatable)=>u.update(elapsed));
+        this.grainFields.forEach((u:IUpdatable)=>u.update(elapsed));
+        this.fireplaces.forEach((u:IUpdatable)=>u.update(elapsed));
+        this.humans.forEach((u:IUpdatable)=>u.update(elapsed));
     }
 }

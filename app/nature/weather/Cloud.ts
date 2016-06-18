@@ -3,7 +3,6 @@ import {Weather} from "./Weather";
 import {Point} from "../../geometry/Point";
 import {Life} from "../Life";
 import {RangedValue} from "../../geometry/RangedValue";
-import {CloudC} from "../constants/NatureConstants";
 import {CloudBounds} from "./CloudBounds";
 import {RandomOption} from "../../util/RandomOption";
 import {Rain} from "./Rain";
@@ -12,6 +11,7 @@ import {ILiveable} from "../interface/ILiveable";
 import {ICollidable} from "../interface/ICollidable";
 import {Percent} from "../../util/Percent";
 import {LineBounds} from "../../geometry/LineBounds";
+import {CloudC} from "./CloudC";
 /**
  * Created by fabiopigna on 03/06/2016.
  */

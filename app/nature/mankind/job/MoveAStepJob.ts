@@ -1,14 +1,15 @@
-import {Job} from "./Job";
+import {IJob} from "./IJob";
 import {Human} from "../Human";
 import {Field} from "../../vegetable/field/Field";
 import {Delta} from "../../../geometry/Delta";
+import {LineBounds} from "../../../geometry/LineBounds";
+import {Point} from "../../../geometry/Point";
 /**
  * Created by fabiopigna on 14/06/2016.
  */
-export class MoveAStepJob implements Job {
+export class MoveAStepJob implements IJob {
 
     private startTime:number;
-    private field:Field;
     private human:Human;
     private TOTAL_DISTANCE:number = 10;
     private TOTAL_TIME:number = 200;
@@ -19,12 +20,11 @@ export class MoveAStepJob implements Job {
     private direction:number;
 
 
-    constructor(human:Human, field:Field, startTime:number) {
+    constructor(human:Human, point:Point, startTime:number) {
         this.human = human;
-        this.field = field;
         this.startTime = startTime;
         this.distanceCompleted = 0;
-        this.direction = this.human.getBounds().getOrigin().x - this.field.getBounds().getCenter().x > 0 ? -1 : +1;
+        this.direction = this.human.getBounds().getOrigin().x - point.x > 0 ? -1 : +1;
     }
 
     isCompleted():boolean {
