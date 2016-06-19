@@ -24,6 +24,10 @@ export class LineBounds implements ISnapBounds,IBounds {
         this.boundsSAT = new Polygon(this.originSAT, [new Vector(0, 0), new Vector(secondPoint.x - firstPoint.x, secondPoint.y - firstPoint.y)]);
     }
 
+    getOrigin():Point {
+        return this._firstPoint;
+    }
+
     getCenter():Point {
         return new Point(0.5 * (this._secondPoint.x + this._firstPoint.x), 0.5 * (this._secondPoint.y + this._firstPoint.y));
     }

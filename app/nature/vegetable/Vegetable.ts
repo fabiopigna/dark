@@ -5,6 +5,7 @@ import {Point} from "../../geometry/Point";
 import {VegetableConfig} from "./VegetableConfig";
 import {VegetableLife} from "./VegetableLife";
 import {IBounds} from "../../geometry/IBounds";
+import {IJobResult} from "../mankind/job/IJobResult";
 /**
  * Created by fabiopigna on 08/06/2016.
  */
@@ -47,7 +48,11 @@ export abstract class Vegetable implements IVegetable {
         return this.life.isFullGrow();
     }
 
+    addJobResult(result:IJobResult):void {
+    };
+    
     abstract update(elapsed:number):void;
 
     abstract getBounds():IBounds;
+
 }

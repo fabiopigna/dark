@@ -5,4 +5,5 @@ import {ICollidableBounds} from "../util/ICollidableBounds";
  */
 export interface IBounds extends ICollidableBounds {
     getCenter():Point;
+    getOrigin():Point;
 }

@@ -3,6 +3,8 @@ import {Field} from "../../vegetable/field/Field";
 import {Human} from "../Human";
 import {FieldLayer} from "../../vegetable/field/FieldLayer";
 import {IVegetable} from "../../vegetable/IVegetable";
+import {IJobResult} from "./IJobResult";
+import {JobResult} from "./JobResult";
 /**
  * Created by fabiopigna on 14/06/2016.
  */
@@ -33,17 +35,16 @@ export class WorkOnFieldJob implements IJob {
     update(elapsed:number):void {
         var time:number = Math.min(this.vegetables.length / this.VELOCITY, (elapsed - this.startTime));
         let delta = Math.floor(time * this.VELOCITY) - this.currentIndex;
-        for (let i = 0; i <  delta; i++) {
+        for (let i = 0; i < delta; i++) {
             this.harvest += this.vegetables[this.currentIndex + i].farm();
         }
         this.currentIndex += delta;
-
-    }
-    
-    applyResults(results:number):void {
     }
 
-    getResults():number {
-        return 0;
+    getResult():IJobResult {
+        return new JobResult(this.harvest);
+    }
+
+    start():void {
     }
 }

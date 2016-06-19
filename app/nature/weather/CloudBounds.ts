@@ -27,7 +27,9 @@ export class CloudBounds extends PolygonBounds {
         var topRightPoint = bottomRightLine.getRandomPoint(new RandomOption(0.5, 0.3)).moveBy(new Delta(0, -maxHeight));
         var t0 = new PolygonBounds(origin, [bottomLeftLine.firstPoint, topLeftPoint, bottomLeftLine.secondPoint]);
         var t1 = new PolygonBounds(origin, [bottomRightLine.firstPoint, topRightPoint, bottomRightLine.secondPoint]);
-        super(origin, t0.getPoints().concat(t1.getPoints()), true);
+
+        var points = [bottomLeftLine.firstPoint, bottomRightLine.secondPoint, topRightPoint, middlePoint, topLeftPoint];
+        super(origin, points, true);
 
 
         this.originSAT = new Vector(this.origin.x, this.origin.y);

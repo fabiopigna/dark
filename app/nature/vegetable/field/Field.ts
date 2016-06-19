@@ -7,17 +7,19 @@ import {IndexArray} from "../../../util/IndexArray";
 import {Weather} from "../../weather/Weather";
 import {Point} from "../../../geometry/Point";
 import {IVegetable} from "../IVegetable";
+import {IElement} from "../../interface/IElement";
+import {IJobResult} from "../../mankind/job/IJobResult";
 /**
  * Created by fabiopigna on 11/06/2016.
  */
-export class Field implements IUpdatable {
+export class Field implements IElement {
     private bounds:CenterLineBounds;
     private fieldLayers:FieldLayer[];
     private weather:Weather;
 
     constructor(earth:Earth, weather:Weather, config:FieldConfig) {
         this.weather = weather;
-        this.bounds = new CenterLineBounds(earth.getBounds().getTopLine().getRandomPoint(), 0.5 * config.fieldWidth);
+        this.bounds = new CenterLineBounds(earth.getBounds().getTopLine().getRandomPoint(), config.fieldWidth);
         this.fieldLayers = new IndexArray(config.numberOfLayers).map((level)=>new FieldLayer(this, level, config));
 
     }
@@ -42,8 +44,7 @@ export class Field implements IUpdatable {
         return this.fieldLayers.some((fieldLayer:FieldLayer)=>fieldLayer.canFarm());
     }
 
-    getCenter():Point {
-        return this.bounds.getCenter()
+    addJobResult(result:IJobResult):void {
     }
 
     getRandomVegetableReadyToFarm():IVegetable {

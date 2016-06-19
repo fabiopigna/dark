@@ -6,42 +6,28 @@ import {StartJob} from "./StartJob";
 import {WorkOnFieldJob} from "./WorkOnFieldJob";
 import {MoveAStepJob} from "./MoveAStepJob";
 import {EndJob} from "./EndJob";
-import {Job} from "./Job";
+import {JobWrapper} from "./JobWrapper";
+import {CloseToCondition} from "./condition/CloseToCondition";
+import {SchedulerBuilder} from "./scheduler/SchedulerBuilder";
+import {IScheduler} from "./scheduler/IScheduler";
+import {IJobResult} from "./IJobResult";
 /**
  * Created by fabiopigna on 12/06/2016.
  */
-export class FarmFieldJob extends Job {
-    private completed:boolean;
-    private startedToFarm:boolean;
+export class FarmFieldJob extends JobWrapper {
+    private field:Field;
 
     constructor(human:Human, field:Field) {
-        super(human, field);
-        this.startedToFarm = false;
-        this.completed = false;
+        super(human);
+        this.field = field;
     }
 
-
-    isCompleted():boolean {
-        return this.completed;
-    }
-
-
-    getNewJob(elapsed:number):IJob {
-        if (this.needToMove()) {
-            return new MoveAStepJob(this.human, this.field.getCenter(), elapsed)
-        } else if (!this.startedToFarm) {
-            this.startedToFarm = true;
-            return new WorkOnFieldJob(this.human, this.field, elapsed);
-        } else {
-            this.completed = true;
-            return new EndJob();
-        }
-    }
-    
-    getResults():number {
-        return 0;
-    }
-
-    applyResults(results:number):void {
+    setupScheduler(schedulerBuilder:SchedulerBuilder, jobResult:IJobResult):IScheduler {
+        return schedulerBuilder
+            .start(this.human)
+            .thenLoop(MoveAStepJob, this.field, CloseToCondition)
+            .thenSingle(WorkOnFieldJob, this.field)
+            .thenLoop(MoveAStepJob, this.human.getHome(), CloseToCondition)
+            .end(EndJob, this.human.getHome(), jobResult);
     }
 }

@@ -16,14 +16,14 @@ export class TreeC {
 
     static FIELD_CONFIG:FieldConfig = new FieldConfig()
         .setVegetableConstructor(Tree)
-        .setMaxQuantity(5)
+        .setMaxQuantity(4)
         .setMinTimeToBorn(5000)
         .setRangeTimeToBorn(5000)
         .setNumberOfLayer(3)
         .setFieldWidth(300);
 
     static VEGETABLE_CONFIG = new VegetableConfig()
-        .setTimeToGrowBase(20000)
+        .setTimeToGrowBase(5000)
         .setTimeToGrowPercent(Percent.valueOf(0));
 
     static PAINT_CONFIG = new VegetablePaintConfig()

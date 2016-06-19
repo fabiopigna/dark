@@ -1,8 +1,8 @@
 import {IJob} from "./IJob";
-import {Field} from "../../vegetable/field/Field";
 import {Human} from "../Human";
-import {FieldLayer} from "../../vegetable/field/FieldLayer";
 import {IVegetable} from "../../vegetable/IVegetable";
+import {IJobResult} from "./IJobResult";
+import {JobResult} from "./JobResult";
 /**
  * Created by fabiopigna on 14/06/2016.
  */
@@ -14,7 +14,7 @@ export class WorkOnVegetableJob implements IJob {
     private VELOCITY:number = 1 / 5000;
     private harvest:number;
     private completed:boolean;
-
+    private HARVEST_TOTAL:number = 200;
 
     constructor(human:Human, vegetable:IVegetable, startTime:number) {
         this.human = human;
@@ -31,16 +31,16 @@ export class WorkOnVegetableJob implements IJob {
     update(elapsed:number):void {
         var progress:number = Math.min(1.0, this.VELOCITY * (elapsed - this.startTime));
         if (progress === 1.0) {
-            this.harvest += this.vegetable.farm();
+            this.harvest += this.HARVEST_TOTAL * this.vegetable.farm();
             this.completed = true;
 
         }
     }
-    
-    applyResults(results:number):void {
+
+    getResult():IJobResult {
+        return new JobResult(this.harvest);
     }
 
-    getResults():number {
-        return this.harvest;
+    start():void {
     }
 }

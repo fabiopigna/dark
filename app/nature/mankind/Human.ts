@@ -5,19 +5,20 @@ import {Life} from "../Life";
 import {HumanBounds} from "./HumanBounds";
 import {JobSchedule} from "./job/JobSchedule";
 import {IJob} from "./job/IJob";
+import {IElement} from "../interface/IElement";
 /**
  * Created by fabiopigna on 11/06/2016.
  */
 export class Human implements IUpdatable {
 
-    private earth:Earth;
     private life:Life;
     private bounds:HumanBounds;
     private jobSchedule:JobSchedule;
     private job:IJob;
+    private home:IElement;
 
-    constructor(earth:Earth, config:HumanLifeConfig) {
-        this.earth = earth;
+    constructor(earth:Earth, home:IElement, config:HumanLifeConfig) {
+        this.home = home;
         this.life = new Life(config.timeToGrowBase, config.timeToGrowPercent, config.timeToDie);
         this.bounds = new HumanBounds(earth.getBounds().getTopLine().getRandomPoint());
         this.jobSchedule = new JobSchedule(earth, this);
@@ -33,6 +34,7 @@ export class Human implements IUpdatable {
         } else {
             if (this.job.isCompleted()) {
                 this.job = this.jobSchedule.getNewJob(elapsed);
+                this.job.start();
             }
             this.job.update(elapsed);
         }
@@ -46,4 +48,7 @@ export class Human implements IUpdatable {
         return this.bounds;
     }
 
+    getHome():IElement {
+        return this.home;
+    }
 }

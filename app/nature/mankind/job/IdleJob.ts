@@ -1,4 +1,6 @@
 import {IJob} from "./IJob";
+import {JobResult} from "./JobResult";
+import {IJobResult} from "./IJobResult";
 /**
  * Created by fabiopigna on 12/06/2016.
  */
@@ -20,11 +22,10 @@ export class IdleJob implements IJob {
         this.completed = elapsed - this.startTime > IdleJob.MIN_DURATION;
     }
 
-
-    applyResults(results:number):void {
+    start():void {
     }
 
-    getResults():number {
-        return 0;
+    getResult():IJobResult {
+        return JobResult.getEmpty();
     }
 }

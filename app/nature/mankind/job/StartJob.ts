@@ -1,8 +1,14 @@
 import {IJob} from "./IJob";
+import {IJobResult} from "./IJobResult";
+import {JobResult} from "./JobResult";
 /**
  * Created by fabiopigna on 12/06/2016.
  */
 export class StartJob implements IJob {
+
+    getResult():IJobResult {
+        return JobResult.getEmpty();
+    }
 
     isCompleted():boolean {
         return true;
@@ -11,12 +17,6 @@ export class StartJob implements IJob {
     update(elapsed:number):void {
     }
 
-
-    applyResults(results:number):void {
-    }
-
-
-    getResults():number {
-        return 0;
+    start():void {
     }
 }

@@ -34,9 +34,10 @@ export class Earth implements IUpdatable {
         this.grainFields.push(new Field(this, weather, GrainC.FIELD_CONFIG));
         this.grainFields.push(new Field(this, weather, GrainC.FIELD_CONFIG));
 
-        this.fireplaces = [new Fireplace(this)];
+        var fireplace = new Fireplace(this);
+        this.fireplaces = [fireplace];
 
-        this.humans = [new Human(this, HumanC.LIFE_CONFIG)];
+        this.humans = [new Human(this, fireplace, HumanC.LIFE_CONFIG)];
     }
 
     getFireplaces():Fireplace[] {

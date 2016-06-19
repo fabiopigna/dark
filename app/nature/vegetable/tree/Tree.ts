@@ -18,17 +18,18 @@ export class Tree extends Vegetable {
         let left = new Point(-normalized * 0.5 * TreeC.WIDTH, -TreeC.DISTANCE_FROM_EARTH);
         let top = new Point(0, -normalized * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH);
         let right = new Point(+normalized * 0.5 * TreeC.WIDTH, -TreeC.DISTANCE_FROM_EARTH);
-        this.bounds = new PolygonBounds(this.getRoot(), [left, top, right])
+        this.bounds = new PolygonBounds(this.getRoot(), [right, top, left])
     }
 
     update(elapsed:number) {
         this.getLife().grow(elapsed, this.isRaining());
         if (this.getLife().isChanged()) {
             var normalized = this.getLife().normalized();
-            let [left, top, right] = this.bounds.getPoints();
-            left.x = -normalized * 0.5 * TreeC.WIDTH;
+            let [right, top, left] = this.bounds.getPoints();
+            right.x = -normalized * 0.5 * TreeC.WIDTH;
             top.y = -normalized * TreeC.MAX_HEIGHT - TreeC.MIN_HEIGHT - TreeC.DISTANCE_FROM_EARTH;
-            right.x = +normalized * 0.5 * TreeC.WIDTH;
+            left.x = +normalized * 0.5 * TreeC.WIDTH;
+            this.bounds.setPoints([right, top, left]);
         }
     }
 

@@ -19,7 +19,7 @@ export class VegetableLife implements ILife{
         this.velocity = 1.0 / this.timeToGrow;
         this.status = new RainStatus();
         this.changed = true;
-        this.lifeNormalized = Math.random();
+        this.lifeNormalized = 0.0;
     }
 
     grow(elapsed:number, raining:boolean) {

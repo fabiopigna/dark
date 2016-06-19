@@ -7,7 +7,7 @@ import {Percent} from "../../../util/Percent";
 export class FireplacePainter implements IPainter {
 
     private snapGroup:Snap.Paper;
-    private sizes = [Percent.valueOf(1.0), Percent.valueOf(0.7), Percent.valueOf(0.4)];
+    private sizes = [Percent.valueOf(1.0), Percent.valueOf(0.6), Percent.valueOf(0.2)];
     private snapFireplaces:Snap.Element[];
     private fireplace:Fireplace;
 

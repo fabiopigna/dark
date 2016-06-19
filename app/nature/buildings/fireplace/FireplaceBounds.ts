@@ -13,9 +13,9 @@ export class FireplaceBounds extends PolygonBounds {
     }
 
     private static  trianglePoints(percent:Percent):Point[] {
-        let p0 = new Point(-percent.get() * FireplaceC.WIDTH * 0.5, 0);
-        let p1 = new Point(0, -percent.get() * FireplaceC.HEIGHT);
-        let p2 = new Point(+percent.get() * FireplaceC.WIDTH * 0.5, 0);
+        let p0 = new Point(-(FireplaceC.MIN_WIDTH + percent.get() * FireplaceC.WIDTH) * 0.5, 0);
+        let p1 = new Point(0, -percent.get() * FireplaceC.HEIGHT - FireplaceC.MIN_HEIGHT);
+        let p2 = new Point(+(FireplaceC.MIN_WIDTH + percent.get() * FireplaceC.WIDTH) * 0.5 , 0);
         return [p0, p1, p2];
     }
 

@@ -18,14 +18,15 @@ export class HumanBounds implements ICollidableBounds {
     constructor(origin:Point) {
         this.origin = origin;
         this.points = [];
-        this.points.push(new Point(-0.5 * HumanC.WIDTH, 0));
-        this.points.push(new Point(-0.5 * HumanC.WIDTH, -HumanC.HEIGHT * 0.8));
-        this.points.push(new Point(0, -HumanC.HEIGHT));
-        this.points.push(new Point(+0.5 * HumanC.WIDTH, -HumanC.HEIGHT * 0.8));
         this.points.push(new Point(+0.5 * HumanC.WIDTH, 0));
+        this.points.push(new Point(+0.5 * HumanC.WIDTH, -HumanC.HEIGHT * 0.8));
+        this.points.push(new Point(0, -HumanC.HEIGHT));
+        this.points.push(new Point(-0.5 * HumanC.WIDTH, -HumanC.HEIGHT * 0.8));
+        this.points.push(new Point(-0.5 * HumanC.WIDTH, 0));
 
         this.originSAT = new Vector(this.origin.x, this.origin.y);
         this.boundsSAT = new Polygon(this.originSAT, this.points.map((point:Point)=>new Vector(point.x, point.y)));
+        
     }
 
     translate(delta:Delta) {

@@ -4,6 +4,9 @@ import {Field} from "../../vegetable/field/Field";
 import {Delta} from "../../../geometry/Delta";
 import {LineBounds} from "../../../geometry/LineBounds";
 import {Point} from "../../../geometry/Point";
+import {IElement} from "../../interface/IElement";
+import {IJobResult} from "./IJobResult";
+import {JobResult} from "./JobResult";
 /**
  * Created by fabiopigna on 14/06/2016.
  */
@@ -18,13 +21,20 @@ export class MoveAStepJob implements IJob {
     private VELOCITY:number = this.TOTAL_DISTANCE / this.MOVING_TIME;
     private distanceCompleted:number;
     private direction:number;
+    private where:IElement;
 
 
-    constructor(human:Human, point:Point, startTime:number) {
+    constructor(human:Human, where:IElement, startTime:number) {
         this.human = human;
+        this.where = where;
         this.startTime = startTime;
+
+    }
+
+
+    start():void {
         this.distanceCompleted = 0;
-        this.direction = this.human.getBounds().getOrigin().x - point.x > 0 ? -1 : +1;
+        this.direction = this.human.getBounds().getOrigin().x - this.where.getBounds().getOrigin().x > 0 ? -1 : +1;
     }
 
     isCompleted():boolean {
@@ -42,11 +52,7 @@ export class MoveAStepJob implements IJob {
         }
     }
 
-
-    applyResults(results:number):void {
-    }
-
-    getResults():number {
-        return 0;
+    getResult():IJobResult {
+        return JobResult.getEmpty();
     }
 }

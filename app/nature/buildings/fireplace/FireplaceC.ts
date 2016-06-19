@@ -4,5 +4,7 @@
 export class FireplaceC {
     static WIDTH:number = 10;
     static HEIGHT:number = 10;
+    static MIN_HEIGHT:number = 2;
+    static MIN_WIDTH:number = 2;
 
 }

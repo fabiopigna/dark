@@ -5,7 +5,8 @@ import {FarmFieldJob} from "./FarmFieldJob";
 import {IdleJob} from "./IdleJob";
 import {StartJob} from "./StartJob";
 import {Field} from "../../vegetable/field/Field";
-import {TimberJob} from "./TimberJob";
+import {FarmVegetableJob} from "./FarmVegetableJob";
+import {IVegetable} from "../../vegetable/IVegetable";
 /**
  * Created by fabiopigna on 12/06/2016.
  */
@@ -24,7 +25,8 @@ export class JobSchedule {
         if (this.human.getLife().isGrowing()) {
             return new IdleJob(elapsed);
         } else if (this.needToTimber(this.human)) {
-            return new TimberJob(this.human, this.earth.getFireplaces()[0], this.earth.getTreeFields()[0]);
+            let tree:IVegetable = this.earth.getTreeFields()[0].getRandomVegetableReadyToFarm();
+            return new FarmVegetableJob(this.human, tree);
         } else if (this.needToFarm(this.human, this.earth.getGrainFields())) {
             let index = Math.floor(Math.random() * this.earth.getGrainFields().length);
             return new FarmFieldJob(this.human, this.earth.getGrainFields()[index]);

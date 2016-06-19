@@ -1,58 +1,38 @@
-import {IJob} from "./IJob";
 import {Human} from "../Human";
-import {Field} from "../../vegetable/field/Field";
-import {Collider} from "../../../util/Collider";
-import {StartJob} from "./StartJob";
-import {WorkOnFieldJob} from "./WorkOnFieldJob";
+import {JobWrapper} from "./JobWrapper";
 import {MoveAStepJob} from "./MoveAStepJob";
-import {EndJob} from "./EndJob";
-import {Job} from "./Job";
 import {WorkOnVegetableJob} from "./WorkOnVegetableJob";
+import {CloseToCondition} from "./condition/CloseToCondition";
+import {EndJob} from "./EndJob";
 import {IVegetable} from "../../vegetable/IVegetable";
-import {FieldLayer} from "../../vegetable/field/FieldLayer";
+import {SchedulerBuilder} from "./scheduler/SchedulerBuilder";
+import {IScheduler} from "./scheduler/IScheduler";
+import {IJobResult} from "./IJobResult";
 /**
- * Created by fabiopigna on 12/06/2016.
+ * Created by fabiopigna on 18/06/2016.
  */
-export class FarmVegetableJob extends Job {
-    private completed:boolean;
-    private startedToFarm:boolean;
+export class FarmVegetableJob extends JobWrapper {
+
     private vegetable:IVegetable;
 
-    constructor(human:Human, field:Field) {
-        super(human, field);
-        this.startedToFarm = false;
-        this.completed = false;
-        this.vegetable = this.field.getLayers()
-            .reduce((all:IVegetable[], layer:FieldLayer)=>all.concat(layer.getVegetables()), [])
-            .filter((vegetable:IVegetable)=>vegetable.getLife().isFullGrow())
-            [0];
+    constructor(human:Human, vegetable:IVegetable) {
+        super(human);
+        this.vegetable = vegetable;
+
+    }
+
+    setupScheduler(schedulerBuilder:SchedulerBuilder, jobResult:IJobResult):IScheduler {
+        return schedulerBuilder
+            .start(this.human)
+            .thenLoop(MoveAStepJob, this.vegetable, CloseToCondition)
+            .thenSingle(WorkOnVegetableJob, this.vegetable)
+            .thenLoop(MoveAStepJob, this.human.getHome(), CloseToCondition)
+            .end(EndJob, this.human.getHome(), jobResult);
     }
 
 
-    isCompleted():boolean {
-        return this.completed;
-    }
-
-    needToMove():boolean {
-        return !Collider.isColliding(this.human.getBounds(), this.vegetable.getBounds());
-    }
-
-    getNewJob(elapsed:number):IJob {
-        if (this.needToMove()) {
-            return new MoveAStepJob(this.human, this.vegetable.getBounds().getCenter(), elapsed)
-        } else if (!this.startedToFarm) {
-            this.startedToFarm = true;
-            return new WorkOnVegetableJob(this.human, this.vegetable, elapsed);
-        } else {
-            this.completed = true;
-            return new EndJob();
-        }
-    }
-
-    getResults():number {
-        return 0;
-    }
-    
-    applyResults(results:number):void {
-    }
 }
+
+
+
+
